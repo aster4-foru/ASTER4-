@@ -361,11 +361,3 @@ document.addEventListener(
 
   }
 );
-function addToCart(productId) {
-
-  alert(
-    "已將商品加入購物車！\n商品編號：" +
-    productId
-  );
-
-}
