@@ -43,7 +43,11 @@ async function loadProducts() {
 
   try {
 
-    const response =
+    // =========================
+    // 同時取得商品資料＋團次資料
+    // =========================
+
+    const productResponse =
       await fetch(
         API_URL +
         "?action=products&group=" +
@@ -51,17 +55,34 @@ async function loadProducts() {
       );
 
 
-    const data =
-      await response.json();
+    const homeResponse =
+      await fetch(
+        API_URL +
+        "?action=home"
+      );
+
+
+    const productData =
+      await productResponse.json();
+
+
+    const homeData =
+      await homeResponse.json();
 
 
     console.log(
       "商品 API：",
-      data
+      productData
     );
 
 
-    if (!data.success) {
+    console.log(
+      "團次 API：",
+      homeData
+    );
+
+
+    if (!productData.success) {
 
       document.getElementById(
         "group-info"
@@ -74,9 +95,48 @@ async function loadProducts() {
     }
 
 
+    // =========================
+    // 找到目前團次
+    // =========================
+
+    let groupName =
+      groupId;
+
+
+    if (
+      homeData.success &&
+      homeData.products
+    ) {
+
+      const group =
+        homeData.products.find(
+          function(item) {
+
+            return String(
+              item.groupId
+            ).trim() ===
+            String(
+              groupId
+            ).trim();
+
+          }
+        );
+
+
+      if (group) {
+
+        groupName =
+          group.name;
+
+      }
+
+    }
+
+
     displayProducts(
-      data.products,
-      groupId
+      productData.products,
+      groupId,
+      groupName
     );
 
 
@@ -105,7 +165,8 @@ async function loadProducts() {
 
 function displayProducts(
   products,
-  groupId
+  groupId,
+  groupName
 ) {
 
   const title =
@@ -120,17 +181,25 @@ function displayProducts(
     );
 
 
-  if (!products ||
-      products.length === 0) {
+  if (
+    !products ||
+    products.length === 0
+  ) {
 
     title.innerHTML = `
+
       <div class="group-id">
         ${groupId}
       </div>
 
       <h1>
-        目前沒有商品
+        ${groupName}
       </h1>
+
+      <p>
+        目前沒有商品
+      </p>
+
     `;
 
     return;
@@ -149,7 +218,7 @@ function displayProducts(
     </div>
 
     <h1>
-      ${products[0].name}
+      ${groupName}
     </h1>
 
     <p>
@@ -189,11 +258,12 @@ function displayProducts(
       if (product.image) {
 
         let imageUrl =
-          String(product.image)
-            .trim();
+          String(
+            product.image
+          ).trim();
 
 
-        // Google Drive
+        // Google Drive 圖片
         if (
           imageUrl.indexOf(
             "drive.google.com"
@@ -219,18 +289,22 @@ function displayProducts(
 
 
         imageHTML = `
+
           <img
             src="${imageUrl}"
             alt="${product.name}"
           >
+
         `;
 
       } else {
 
         imageHTML = `
+
           <div class="no-image">
             ASTER4
           </div>
+
         `;
 
       }
@@ -270,22 +344,26 @@ function displayProducts(
         product.status === "開放"
       ) {
 
-buttonHTML = `
-  <button
-    type="button"
-    class="buy-button"
-    onclick="addToCart('${product.productId}')"
-  >
-    加入購物車
-  </button>
-`;
+        buttonHTML = `
+
+          <button
+            type="button"
+            class="buy-button"
+            onclick="addToCart('${product.productId}')"
+          >
+            加入購物車
+          </button>
+
+        `;
 
       } else {
 
         buttonHTML = `
+
           <div class="disabled-button">
             ${product.status}
           </div>
+
         `;
 
       }
@@ -361,6 +439,12 @@ document.addEventListener(
 
   }
 );
+
+
+// =========================
+// 加入購物車
+// =========================
+
 async function addToCart(productId) {
 
   const cart =
@@ -377,7 +461,9 @@ async function addToCart(productId) {
       await fetch(
         API_URL +
         "?action=product&product=" +
-        encodeURIComponent(productId)
+        encodeURIComponent(
+          productId
+        )
       );
 
 
@@ -411,8 +497,10 @@ async function addToCart(productId) {
       cart.find(
         function(item) {
 
-          return item.productId ===
-            product.productId;
+          return (
+            item.productId ===
+            product.productId
+          );
 
         }
       );
@@ -421,7 +509,9 @@ async function addToCart(productId) {
     if (existing) {
 
       existing.quantity =
-        Number(existing.quantity) + 1;
+        Number(
+          existing.quantity
+        ) + 1;
 
     } else {
 
@@ -443,7 +533,9 @@ async function addToCart(productId) {
           product.version,
 
         price:
-          Number(product.price),
+          Number(
+            product.price
+          ),
 
         image:
           product.image,
@@ -457,7 +549,7 @@ async function addToCart(productId) {
 
 
     // =========================
-    // 儲存
+    // 儲存購物車
     // =========================
 
     localStorage.setItem(
@@ -489,4 +581,3 @@ async function addToCart(productId) {
   }
 
 }
-onclick="addToCart('${product.productId}')"
