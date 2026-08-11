@@ -1,0 +1,177 @@
+/* =========================
+   ASTER4｜Basic Style
+   ========================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, "Noto Sans TC", sans-serif;
+  background: #fafafa;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* Header */
+
+header {
+  width: 100%;
+  padding: 22px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.order-link {
+  text-decoration: none;
+  color: #222;
+  font-size: 14px;
+}
+
+/* Hero */
+
+.hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 90px 6% 70px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 48px;
+  letter-spacing: 6px;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  color: #777;
+  font-size: 15px;
+}
+
+/* Section */
+
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 6% 80px;
+}
+
+.section-title {
+  margin-bottom: 28px;
+}
+
+.section-title h2 {
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+
+.section-title p {
+  margin-top: 5px;
+  color: #888;
+  font-size: 13px;
+}
+
+/* Product Grid */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Product Card */
+
+.product-card {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #eeeeee;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.product-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.product-info {
+  padding: 18px;
+}
+
+.product-group {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 5px;
+}
+
+.product-name {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* Footer */
+
+footer {
+  padding: 40px 20px;
+  text-align: center;
+  color: #999;
+  font-size: 12px;
+  border-top: 1px solid #eeeeee;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  header {
+    padding: 18px 5%;
+  }
+
+  .hero {
+    padding: 65px 5% 50px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+    letter-spacing: 4px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .product-info {
+    padding: 14px;
+  }
+
+  .product-name {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
