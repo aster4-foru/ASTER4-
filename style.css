@@ -280,3 +280,177 @@ footer {
   }
 
 }
+/* =========================
+   Order Page
+   ========================= */
+
+.order-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 70px 6% 90px;
+}
+
+.order-title {
+  margin-bottom: 45px;
+}
+
+.order-title .product-group {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.order-title h1 {
+  font-size: 36px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.order-title p {
+  color: #888;
+  font-size: 14px;
+}
+
+
+/* Form Section */
+
+.form-section {
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 22px;
+}
+
+.form-section h2 {
+  font-size: 18px;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+}
+
+
+/* Product */
+
+.order-product {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.order-product img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.order-product .product-name {
+  margin-bottom: 6px;
+}
+
+.order-product .product-price {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+
+/* Quantity */
+
+.quantity-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quantity-box label {
+  font-size: 13px;
+  color: #777;
+}
+
+.quantity-box input {
+  width: 75px;
+  padding: 9px 10px;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+
+/* Form */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #999999;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+
+/* Submit */
+
+.order-submit {
+  text-align: center;
+  margin-top: 35px;
+}
+
+.order-submit .buy-button {
+  max-width: 400px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .order-page {
+    padding: 45px 5% 70px;
+  }
+
+  .order-title h1 {
+    font-size: 30px;
+  }
+
+  .form-section {
+    padding: 22px;
+    border-radius: 17px;
+  }
+
+  .order-product {
+    align-items: flex-start;
+  }
+
+  .order-product img {
+    width: 90px;
+    height: 90px;
+  }
+
+}
