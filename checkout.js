@@ -1,8 +1,5 @@
 const CART_KEY = "ASTER4_CART";
 
-const API_URL =
-  "https://script.google.com/macros/s/AKfycbypJDVSs2untkfyJ1upJZQgpRfDSclLEvFCt9RbUt48QisXp5HvqMcZRmgqnB-KIKh6/exec";
-
 
 // =========================
 // 讀取購物車
@@ -101,63 +98,10 @@ function convertImageUrl(image) {
 
 
 // =========================
-// 取得團次名稱
+// 顯示 Checkout 商品
 // =========================
 
-async function getGroupName(groupId) {
-
-  if (!groupId) {
-    return "";
-  }
-
-
-  try {
-
-    const response =
-      await fetch(
-        API_URL +
-        "?action=products&group=" +
-        encodeURIComponent(groupId)
-      );
-
-
-    const data =
-      await response.json();
-
-
-    if (
-      data.success &&
-      data.products &&
-      data.products.length > 0
-    ) {
-
-      return (
-        data.products[0].groupName ||
-        ""
-      );
-
-    }
-
-  } catch (error) {
-
-    console.error(
-      "取得團次名稱失敗：",
-      error
-    );
-
-  }
-
-
-  return "";
-
-}
-
-
-// =========================
-// 顯示 Checkout
-// =========================
-
-async function displayCheckoutItems() {
+function displayCheckoutItems() {
 
   const cart =
     getCart();
@@ -179,6 +123,12 @@ async function displayCheckoutItems() {
     document.getElementById(
       "checkout-item-count"
     );
+
+
+  console.log(
+    "結帳頁購物車：",
+    cart
+  );
 
 
   if (!container) {
@@ -258,40 +208,6 @@ async function displayCheckoutItems() {
 
 
   // =========================
-  // 團次名稱快取
-  // =========================
-
-  const groupNames = {};
-
-
-  // =========================
-  // 先取得所有團次名稱
-  // =========================
-
-  for (
-    const item of cart
-  ) {
-
-    const groupId =
-      item.groupId;
-
-
-    if (
-      groupId &&
-      !groupNames[groupId]
-    ) {
-
-      groupNames[groupId] =
-        await getGroupName(
-          groupId
-        );
-
-    }
-
-  }
-
-
-  // =========================
   // 建立商品
   // =========================
 
@@ -359,15 +275,6 @@ async function displayCheckoutItems() {
 
 
       // =========================
-      // 團次名稱
-      // =========================
-
-      const groupName =
-        groupNames[item.groupId] ||
-        "";
-
-
-      // =========================
       // 商品內容
       // =========================
 
@@ -381,17 +288,6 @@ async function displayCheckoutItems() {
 
 
         <div class="checkout-item-info">
-
-
-          ${
-            groupName
-              ? `
-                <div class="checkout-item-group-name">
-                  ${groupName}
-                </div>
-              `
-              : ""
-          }
 
 
           <div class="checkout-item-channel">
@@ -461,13 +357,7 @@ async function displayCheckoutItems() {
 
 
   console.log(
-    "Checkout 商品：",
-    cart
-  );
-
-
-  console.log(
-    "Checkout 總額：",
+    "訂單總額：",
     total
   );
 
