@@ -1,34 +1,23 @@
+```javascript
 const CART_KEY = "ASTER4_CART";
 
 
-// =========================
+// =====================================================
 // 讀取購物車
-// =========================
+// =====================================================
 
 function getCart() {
 
-  const rawCart =
-    localStorage.getItem(CART_KEY);
-
-  console.log(
-    "ASTER4_CART：",
-    rawCart
-  );
-
-
-  if (!rawCart) {
-    return [];
-  }
-
-
   try {
 
-    return JSON.parse(rawCart);
+    return JSON.parse(
+      localStorage.getItem(CART_KEY) || "[]"
+    );
 
   } catch (error) {
 
     console.error(
-      "購物車資料解析失敗：",
+      "購物車資料讀取失敗：",
       error
     );
 
@@ -39,9 +28,9 @@ function getCart() {
 }
 
 
-// =========================
+// =====================================================
 // 金額格式
-// =========================
+// =====================================================
 
 function formatPrice(price) {
 
@@ -53,82 +42,28 @@ function formatPrice(price) {
 }
 
 
-// =========================
-// Google Drive 圖片
-// =========================
-
-function convertImageUrl(image) {
-
-  if (!image) {
-    return "";
-  }
-
-
-  let imageUrl =
-    String(image).trim();
-
-
-  if (
-    imageUrl.includes(
-      "drive.google.com"
-    )
-  ) {
-
-    const match =
-      imageUrl.match(
-        /\/d\/([^\/]+)/
-      );
-
-
-    if (match) {
-
-      imageUrl =
-        "https://drive.google.com/thumbnail?id=" +
-        match[1] +
-        "&sz=w500";
-
-    }
-
-  }
-
-
-  return imageUrl;
-
-}
-
-
-// =========================
-// 顯示 Checkout 商品
-// =========================
+// =====================================================
+// 顯示訂單商品
+// =====================================================
 
 function displayCheckoutItems() {
 
-  const cart =
-    getCart();
-
+  const cart = getCart();
 
   const container =
     document.getElementById(
       "checkout-items"
     );
 
-
   const totalElement =
     document.getElementById(
       "checkout-total"
     );
 
-
   const countElement =
     document.getElementById(
       "checkout-item-count"
     );
-
-
-  console.log(
-    "結帳頁購物車：",
-    cart
-  );
 
 
   if (!container) {
@@ -142,23 +77,12 @@ function displayCheckoutItems() {
   }
 
 
-  if (!totalElement) {
-
-    console.error(
-      "找不到 checkout-total"
-    );
-
-    return;
-
-  }
-
-
-  // =========================
-  // 空購物車
-  // =========================
+  // ===================================================
+  // 沒有商品
+  // ===================================================
 
   if (
-    !Array.isArray(cart) ||
+    !cart ||
     cart.length === 0
   ) {
 
@@ -182,14 +106,18 @@ function displayCheckoutItems() {
     `;
 
 
-    totalElement.textContent =
-      "NT$ 0";
+    if (totalElement) {
+
+      totalElement.textContent =
+        "NT$ 0";
+
+    }
 
 
     if (countElement) {
 
       countElement.textContent =
-        "0 項商品";
+        "0 件";
 
     }
 
@@ -199,6 +127,10 @@ function displayCheckoutItems() {
   }
 
 
+  // ===================================================
+  // 清空
+  // ===================================================
+
   container.innerHTML = "";
 
 
@@ -207,12 +139,13 @@ function displayCheckoutItems() {
   let totalQuantity = 0;
 
 
-  // =========================
-  // 建立商品
-  // =========================
+  // ===================================================
+  // 建立訂單明細
+  // ===================================================
 
   cart.forEach(
     function(item) {
+
 
       const price =
         Number(item.price) || 0;
@@ -241,53 +174,14 @@ function displayCheckoutItems() {
         "checkout-item";
 
 
-      // =========================
-      // 商品圖片
-      // =========================
-
-      const imageUrl =
-        convertImageUrl(
-          item.image
-        );
-
-
-      let imageHTML = `
-
-        <div class="checkout-no-image">
-          ASTER4
-        </div>
-
-      `;
-
-
-      if (imageUrl) {
-
-        imageHTML = `
-
-          <img
-            src="${imageUrl}"
-            alt="${item.name || "商品"}"
-          >
-
-        `;
-
-      }
-
-
-      // =========================
-      // 商品內容
-      // =========================
-
       itemElement.innerHTML = `
 
-        <div class="checkout-item-image">
-
-          ${imageHTML}
-
-        </div>
-
-
         <div class="checkout-item-info">
+
+
+          <div class="checkout-item-group">
+            ${item.groupId || ""}
+          </div>
 
 
           <div class="checkout-item-channel">
@@ -318,13 +212,21 @@ function displayCheckoutItems() {
               × ${quantity}
             </span>
 
-
-            <strong>
-              ${formatPrice(subtotal)}
-            </strong>
-
           </div>
 
+
+        </div>
+
+
+        <div class="checkout-item-price">
+
+          <small>
+            小計
+          </small>
+
+          <strong>
+            ${formatPrice(subtotal)}
+          </strong>
 
         </div>
 
@@ -339,34 +241,47 @@ function displayCheckoutItems() {
   );
 
 
-  // =========================
+  // ===================================================
   // 總額
-  // =========================
+  // ===================================================
 
-  totalElement.textContent =
-    formatPrice(total);
+  if (totalElement) {
 
+    totalElement.textContent =
+      formatPrice(total);
+
+  }
+
+
+  // ===================================================
+  // 商品數量
+  // ===================================================
 
   if (countElement) {
 
     countElement.textContent =
-      totalQuantity +
-      " 項商品";
+      totalQuantity + " 件";
 
   }
 
 
   console.log(
-    "訂單總額：",
+    "結帳商品：",
+    cart
+  );
+
+
+  console.log(
+    "結帳總額：",
     total
   );
 
 }
 
 
-// =========================
+// =====================================================
 // 頁面載入
-// =========================
+// =====================================================
 
 document.addEventListener(
   "DOMContentLoaded",
@@ -376,3 +291,4 @@ document.addEventListener(
 
   }
 );
+```
