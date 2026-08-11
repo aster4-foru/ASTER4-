@@ -1,17 +1,28 @@
+```html
 <!DOCTYPE html>
 <html lang="zh-Hant">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>ASTER4｜K-POP GOODS & ALBUMS</title>
 
-  <link rel="stylesheet" href="style.css">
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
 </head>
 
 
 <body>
+
 
   <!-- =========================
        Header
@@ -21,17 +32,39 @@
 
     <div class="header-inner">
 
-      <a href="index.html" class="logo">
+      <a
+        href="index.html"
+        class="logo"
+      >
         ASTER4
       </a>
 
-      <a href="#" class="order-link">
-        訂單查詢
-      </a>
+
+      <nav class="header-nav">
+
+        <a href="index.html">
+          首頁
+        </a>
+
+
+        <a href="cart.html">
+          購物車
+          <span id="cart-count">
+            0
+          </span>
+        </a>
+
+
+        <a href="order-search.html">
+          訂單查詢
+        </a>
+
+      </nav>
 
     </div>
 
   </header>
+
 
 
   <!-- =========================
@@ -40,12 +73,16 @@
 
   <section class="hero">
 
-    <h1>ASTER4</h1>
+    <h1>
+      ASTER4
+    </h1>
+
     <p>
       K-POP GOODS &amp; ALBUMS
     </p>
 
   </section>
+
 
 
   <!-- =========================
@@ -56,7 +93,9 @@
 
     <div class="section-title">
 
-      <h2>開團中</h2>
+      <h2>
+        開團中
+      </h2>
 
       <p>
         Currently Open
@@ -67,25 +106,27 @@
 
     <!--
       商品卡片會由 script.js
-      從 GAS API 自動產生
+      從 GAS 自動載入
     -->
 
     <div
-      class="product-grid"
       id="products"
+      class="product-grid"
     >
     </div>
-
 
   </section>
 
 
+
   <!-- =========================
-       JavaScript
+       Script
   ========================== -->
 
   <script src="script.js"></script>
 
+
 </body>
 
 </html>
+```
