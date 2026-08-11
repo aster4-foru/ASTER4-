@@ -799,3 +799,6 @@ a.product-card:active {
   }
 
 }
+body {
+  border: 10px solid red;
+}
