@@ -15,11 +15,6 @@
 
   <style>
 
-    /* =====================================================
-       ASTER4 PRODUCT PAGE
-       米白 × 淡綠 × 幸運草
-    ===================================================== */
-
     * {
       box-sizing: border-box;
     }
@@ -122,8 +117,7 @@
 
       font-size: 12px;
 
-      transition:
-        color 0.2s ease;
+      transition: color 0.2s ease;
     }
 
 
@@ -169,7 +163,7 @@
 
       margin: 0 auto;
 
-      padding: 72px 0 65px;
+      padding: 65px 0 55px;
 
       border-bottom: 1px solid #ddd8cc;
     }
@@ -182,7 +176,7 @@
 
       gap: 10px;
 
-      margin-bottom: 18px;
+      margin-bottom: 17px;
 
       color: #82927f;
 
@@ -205,15 +199,7 @@
     }
 
 
-    .group-info {
-      position: relative;
-    }
-
-
     .group-info .group-id {
-      /*
-        G001 / G002 不顯示給客人
-      */
       display: none;
     }
 
@@ -228,7 +214,7 @@
       font-size: clamp(
         38px,
         5vw,
-        54px
+        52px
       );
 
       line-height: 1.15;
@@ -240,7 +226,7 @@
 
 
     .group-info p {
-      margin: 14px 0 0;
+      margin: 13px 0 0;
 
       color: #85867f;
 
@@ -255,13 +241,13 @@
     .hero-clover {
       position: absolute;
 
-      right: 10px;
+      right: 8px;
 
-      bottom: 40px;
+      bottom: 32px;
 
       color: #82977d;
 
-      font-size: 30px;
+      font-size: 28px;
 
       opacity: 0.55;
 
@@ -274,7 +260,7 @@
     ===================================================== */
 
     .products-section {
-      padding: 62px 0 90px;
+      padding: 55px 0 90px;
     }
 
 
@@ -295,7 +281,7 @@
 
       justify-content: space-between;
 
-      margin-bottom: 28px;
+      margin-bottom: 25px;
     }
 
 
@@ -339,27 +325,26 @@
     ===================================================== */
 
     .product-list {
-      display: grid;
+      display: flex;
 
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+      flex-direction: column;
 
-      gap: 22px;
+      gap: 12px;
     }
 
 
     /* =====================================================
-       PRODUCT CARD
+       HORIZONTAL PRODUCT CARD
     ===================================================== */
 
     .product-item {
-      display: grid;
+      width: 100%;
 
-      grid-template-columns:
-        minmax(190px, 42%)
-        1fr;
+      min-height: 138px;
 
-      min-height: 310px;
+      display: flex;
+
+      align-items: stretch;
 
       overflow: hidden;
 
@@ -368,33 +353,35 @@
       border: 1px solid #e0dbd0;
 
       transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
     }
 
 
     .product-item:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
 
       box-shadow:
-        0 18px 35px
+        0 12px 25px
         rgba(
           75,
           79,
           67,
-          0.09
+          0.08
         );
     }
 
 
     /* =====================================================
-       PRODUCT IMAGE
+       SMALL IMAGE
     ===================================================== */
 
     .product-item-image {
-      position: relative;
+      width: 138px;
 
-      min-height: 310px;
+      min-width: 138px;
+
+      height: 138px;
 
       overflow: hidden;
 
@@ -412,7 +399,7 @@
       object-fit: cover;
 
       transition:
-        transform 0.4s ease;
+        transform 0.35s ease;
     }
 
 
@@ -427,17 +414,15 @@
 
       height: 100%;
 
-      min-height: 310px;
-
       display: flex;
 
       align-items: center;
 
       justify-content: center;
 
-      color: #9a9a91;
+      color: #999890;
 
-      font-size: 10px;
+      font-size: 9px;
 
       letter-spacing: 0.2em;
     }
@@ -448,18 +433,22 @@
     ===================================================== */
 
     .product-item-info {
-      padding: 27px 25px 25px;
+      flex: 1;
+
+      min-width: 0;
+
+      padding: 22px 25px;
 
       display: flex;
 
       flex-direction: column;
 
-      min-width: 0;
+      justify-content: center;
     }
 
 
     .product-channel {
-      margin-bottom: 10px;
+      margin-bottom: 6px;
 
       color: #82927f;
 
@@ -478,7 +467,7 @@
 
       color: #3d423b;
 
-      font-size: 19px;
+      font-size: 17px;
 
       line-height: 1.5;
 
@@ -489,11 +478,11 @@
 
 
     .product-version {
-      margin-top: 10px;
+      margin-top: 5px;
 
       color: #85867f;
 
-      font-size: 12px;
+      font-size: 11px;
 
       line-height: 1.7;
     }
@@ -506,13 +495,13 @@
     .product-status {
       width: fit-content;
 
-      margin-top: 16px;
+      margin-top: 9px;
 
-      padding: 5px 9px;
+      padding: 4px 8px;
 
       border-radius: 2px;
 
-      font-size: 9px;
+      font-size: 8px;
 
       letter-spacing: 0.08em;
     }
@@ -533,20 +522,30 @@
 
 
     /* =====================================================
-       ACTION
+       ACTION AREA
     ===================================================== */
 
     .product-action {
-      margin-top: auto;
+      width: 170px;
 
-      padding-top: 25px;
+      min-width: 170px;
+
+      padding: 22px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-left: 1px solid #e4dfd5;
     }
 
 
     .buy-button {
       width: 100%;
 
-      min-height: 44px;
+      min-height: 42px;
 
       border: 1px solid #71836e;
 
@@ -558,7 +557,7 @@
 
       cursor: pointer;
 
-      font-size: 11px;
+      font-size: 10px;
 
       font-weight: 600;
 
@@ -578,15 +577,15 @@
 
 
     .disabled-button {
+      width: 100%;
+
+      min-height: 42px;
+
       display: flex;
 
       align-items: center;
 
       justify-content: center;
-
-      width: 100%;
-
-      min-height: 44px;
 
       border: 1px solid #d2cec5;
 
@@ -596,7 +595,7 @@
 
       color: #8d8b83;
 
-      font-size: 11px;
+      font-size: 10px;
     }
 
 
@@ -661,7 +660,7 @@
     ===================================================== */
 
     .loading-state {
-      padding: 80px 20px;
+      padding: 65px 20px;
 
       color: #8f8f87;
 
@@ -674,7 +673,7 @@
 
 
     /* =====================================================
-       MOBILE
+       TABLET
     ===================================================== */
 
     @media (max-width: 800px) {
@@ -705,7 +704,7 @@
       .group-hero {
         width: calc(100% - 30px);
 
-        padding: 55px 0 48px;
+        padding: 52px 0 45px;
       }
 
 
@@ -715,16 +714,16 @@
 
 
       .hero-clover {
-        right: 2px;
+        right: 0;
 
-        bottom: 26px;
+        bottom: 25px;
 
-        font-size: 25px;
+        font-size: 24px;
       }
 
 
       .products-section {
-        padding: 55px 0 70px;
+        padding: 50px 0 70px;
       }
 
 
@@ -736,7 +735,7 @@
       .products-heading {
         display: block;
 
-        margin-bottom: 23px;
+        margin-bottom: 22px;
       }
 
 
@@ -746,61 +745,53 @@
 
 
       .products-heading-note {
-        display: block;
-
         margin-top: 8px;
       }
 
 
-      .product-list {
-        grid-template-columns: 1fr;
-
-        gap: 18px;
-      }
-
-
       .product-item {
-        grid-template-columns: 42% 58%;
-
-        min-height: 245px;
+        min-height: 120px;
       }
 
 
       .product-item-image {
-        min-height: 245px;
-      }
+        width: 120px;
 
+        min-width: 120px;
 
-      .no-image {
-        min-height: 245px;
+        height: 120px;
       }
 
 
       .product-item-info {
-        padding: 21px 18px 19px;
+        padding: 17px 18px;
       }
 
 
       .product-item-name {
-        font-size: 17px;
+        font-size: 15px;
       }
 
 
       .product-version {
-        font-size: 11px;
+        font-size: 10px;
       }
 
 
       .product-action {
-        padding-top: 18px;
+        width: 130px;
+
+        min-width: 130px;
+
+        padding: 15px;
       }
 
 
       .buy-button,
       .disabled-button {
-        min-height: 40px;
+        min-height: 38px;
 
-        font-size: 10px;
+        font-size: 9px;
       }
 
 
@@ -821,31 +812,112 @@
 
 
     /* =====================================================
-       SMALL MOBILE
+       MOBILE
     ===================================================== */
 
-    @media (max-width: 430px) {
+    @media (max-width: 560px) {
 
 
       .product-item {
-        grid-template-columns: 1fr;
+        min-height: 112px;
       }
 
 
       .product-item-image {
-        min-height: 300px;
+        width: 100px;
 
-        aspect-ratio: 1 / 1;
-      }
+        min-width: 100px;
 
-
-      .no-image {
-        min-height: 300px;
+        height: 112px;
       }
 
 
       .product-item-info {
-        min-height: 225px;
+        padding: 14px 14px;
+      }
+
+
+      .product-channel {
+        margin-bottom: 4px;
+
+        font-size: 8px;
+      }
+
+
+      .product-item-name {
+        font-size: 14px;
+
+        line-height: 1.4;
+      }
+
+
+      .product-version {
+        margin-top: 3px;
+
+        font-size: 9px;
+      }
+
+
+      .product-status {
+        margin-top: 6px;
+
+        padding: 3px 6px;
+
+        font-size: 7px;
+      }
+
+
+      .product-action {
+        width: 100px;
+
+        min-width: 100px;
+
+        padding: 10px;
+      }
+
+
+      .buy-button,
+      .disabled-button {
+        min-height: 36px;
+
+        padding: 0 6px;
+
+        font-size: 8px;
+      }
+
+    }
+
+
+    /* =====================================================
+       VERY SMALL MOBILE
+    ===================================================== */
+
+    @media (max-width: 390px) {
+
+
+      .product-item-image {
+        width: 82px;
+
+        min-width: 82px;
+      }
+
+
+      .product-item-info {
+        padding: 12px 10px;
+      }
+
+
+      .product-item-name {
+        font-size: 13px;
+      }
+
+
+      .product-action {
+        width: 88px;
+
+        min-width: 88px;
+
+        padding: 8px;
       }
 
     }
@@ -874,7 +946,6 @@
       >
         ASTER4
       </a>
-
 
 
       <nav class="header-nav">
@@ -922,7 +993,7 @@
     </div>
 
 
-    <div
+    <section
       id="group-info"
       class="group-info"
     >
@@ -931,7 +1002,7 @@
         載入中...
       </div>
 
-    </div>
+    </section>
 
 
     <div class="hero-clover">
@@ -979,12 +1050,12 @@
 
 
 
-      <div
+      <section
         id="product-list"
         class="product-list"
       >
 
-      </div>
+      </section>
 
 
     </div>
@@ -1031,10 +1102,6 @@
 
 
 
-  <!-- =====================================================
-       PRODUCT JS
-  ====================================================== -->
-
   <script src="product.js"></script>
 
 
@@ -1047,9 +1114,7 @@
 
     function updateCartCount() {
 
-
       try {
-
 
         const cart =
           JSON.parse(
@@ -1088,7 +1153,6 @@
 
         }
 
-
       } catch (error) {
 
         console.error(
@@ -1109,7 +1173,6 @@
 
       }
     );
-
 
   </script>
 
