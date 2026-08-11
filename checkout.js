@@ -330,3 +330,4 @@ document.addEventListener(
 
   }
 );
+alert("CHECKOUT JS 有成功載入！");
