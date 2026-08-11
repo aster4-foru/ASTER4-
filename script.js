@@ -16,29 +16,16 @@ async function loadHomeProducts() {
 
     const data = await response.json();
 
-    console.log("GAS API 回傳：", data);
-
-
     if (!data.success) {
-
-      console.error(
-        "取得商品失敗：",
-        data.message
-      );
-
+      console.error("取得商品失敗：", data.message);
       return;
-
     }
-
 
     displayHomeProducts(data.products);
 
   } catch (error) {
 
-    console.error(
-      "API 連線失敗：",
-      error
-    );
+    console.error("API 連線失敗：", error);
 
   }
 
@@ -55,13 +42,30 @@ function displayHomeProducts(products) {
     document.getElementById("products");
 
   if (!container) {
-    console.error("找不到 #products");
     return;
   }
 
 
+  // 清空原本內容
   container.innerHTML = "";
 
+
+  // 沒有商品
+  if (!products || products.length === 0) {
+
+    container.innerHTML = `
+      <div class="no-products">
+        目前沒有開團中的商品
+      </div>
+    `;
+
+    return;
+  }
+
+
+  // =========================
+  // 一團建立一張卡片
+  // =========================
 
   products.forEach(function(product) {
 
@@ -69,7 +73,7 @@ function displayHomeProducts(products) {
       document.createElement("a");
 
 
-    // ⭐ 商品卡片真正的跳轉網址
+    // 點擊後進入該團次
     card.href =
       "./product.html?group=" +
       encodeURIComponent(product.groupId);
@@ -79,23 +83,34 @@ function displayHomeProducts(products) {
       "product-card";
 
 
+    // 圖片
+    let imageHTML = "";
+
+    if (product.image) {
+
+      imageHTML = `
+        <img
+          class="product-image"
+          src="${product.image}"
+          alt="${product.name || ""}"
+        >
+      `;
+
+    } else {
+
+      imageHTML = `
+        <div class="product-image no-image">
+          ASTER4
+        </div>
+      `;
+
+    }
+
+
+    // 卡片內容
     card.innerHTML = `
 
-      ${
-        product.image
-        ? `
-          <img
-            class="product-image"
-            src="${product.image}"
-            alt="${product.name}"
-          >
-        `
-        : `
-          <div class="product-image no-image">
-            ASTER4
-          </div>
-        `
-      }
+      ${imageHTML}
 
       <div class="product-info">
 
@@ -104,7 +119,7 @@ function displayHomeProducts(products) {
         </div>
 
         <div class="product-name">
-          ${product.name}
+          ${product.name || ""}
         </div>
 
       </div>
@@ -112,6 +127,7 @@ function displayHomeProducts(products) {
     `;
 
 
+    // 加入首頁
     container.appendChild(card);
 
   });
