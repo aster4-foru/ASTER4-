@@ -348,26 +348,23 @@
        HORIZONTAL PRODUCT CARD
     ===================================================== */
 
-    .product-item {
-      width: 100%;
+  .product-item {
+  width: 100%;
+  min-width: 0;
+  height: 96px;
 
-      height: 96px;
+  display: flex;
+  align-items: stretch;
 
-      display: flex;
+  overflow: hidden;
 
-      align-items: stretch;
+  background: #fbfaf6;
+  border: 1px solid #e0dbd0;
 
-      overflow: hidden;
-
-      background: #fbfaf6;
-
-      border: 1px solid #e0dbd0;
-
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-    }
-
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
 
     .product-item:hover {
       transform: translateY(-1px);
@@ -444,18 +441,17 @@
     ===================================================== */
 
     .product-item-info {
-      flex: 1;
+  flex: 1;
+  min-width: 0;
 
-      min-width: 0;
+  padding: 12px 20px;
 
-      padding: 12px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: center;
-    }
+  overflow: hidden;
+}
 
 
     /* =====================================================
@@ -482,18 +478,21 @@
     ===================================================== */
 
     .product-item-name {
-      margin: 0;
+  margin: 0;
 
-      color: #3d423b;
+  color: #3d423b;
 
-      font-size: 15px;
+  font-size: 15px;
+  line-height: 1.35;
 
-      line-height: 1.35;
+  font-weight: 600;
 
-      font-weight: 600;
+  letter-spacing: -0.01em;
 
-      letter-spacing: -0.01em;
-    }
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 
     /* =====================================================
@@ -557,20 +556,21 @@
     ===================================================== */
 
     .product-action {
-      width: 155px;
+  flex: 0 0 140px;
 
-      min-width: 155px;
+  width: 140px;
+  min-width: 140px;
 
-      padding: 15px;
+  padding: 15px;
 
-      display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-      align-items: center;
+  border-left: 1px solid #e4dfd5;
 
-      justify-content: center;
-
-      border-left: 1px solid #e4dfd5;
-    }
+  background: #fbfaf6;
+}
 
 
     .buy-button {
@@ -815,12 +815,13 @@
 
 
       .product-action {
-        width: 125px;
+  flex: 0 0 110px;
 
-        min-width: 125px;
+  width: 110px;
+  min-width: 110px;
 
-        padding: 12px;
-      }
+  padding: 10px;
+}
 
 
       .buy-button,
