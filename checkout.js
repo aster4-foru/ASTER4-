@@ -1,4 +1,4 @@
-```javascript id="i4r8m3"
+```javascript
 const CART_KEY = "ASTER4_CART";
 
 
@@ -8,27 +8,42 @@ const CART_KEY = "ASTER4_CART";
 
 function getCart() {
 
-  return JSON.parse(
-    localStorage.getItem(CART_KEY) || "[]"
+  try {
+
+    return JSON.parse(
+      localStorage.getItem(CART_KEY) || "[]"
+    );
+
+  } catch (error) {
+
+    console.error(
+      "購物車資料讀取失敗：",
+      error
+    );
+
+    return [];
+
+  }
+
+}
+
+
+// =========================
+// 金額格式
+// =========================
+
+function formatPrice(price) {
+
+  return (
+    "NT$ " +
+    Number(price || 0).toLocaleString()
   );
 
 }
 
 
 // =========================
-// 格式化價格
-// =========================
-
-function formatPrice(price) {
-
-  return "NT$ " +
-    Number(price).toLocaleString();
-
-}
-
-
-// =========================
-// 顯示購物車商品
+// 顯示結帳商品
 // =========================
 
 function displayCheckoutItems() {
@@ -36,10 +51,12 @@ function displayCheckoutItems() {
   const cart =
     getCart();
 
+
   const container =
     document.getElementById(
       "checkout-items"
     );
+
 
   const totalElement =
     document.getElementById(
@@ -48,12 +65,27 @@ function displayCheckoutItems() {
 
 
   if (!container) {
+
+    console.error(
+      "找不到 checkout-items"
+    );
+
     return;
+
+  }
+
+
+  if (!totalElement) {
+
+    console.error(
+      "找不到 checkout-total"
+    );
+
   }
 
 
   // =========================
-  // 購物車是空的
+  // 購物車沒有商品
   // =========================
 
   if (
@@ -95,7 +127,7 @@ function displayCheckoutItems() {
 
 
   // =========================
-  // 清空
+  // 清空原本內容
   // =========================
 
   container.innerHTML = "";
@@ -111,12 +143,12 @@ function displayCheckoutItems() {
   cart.forEach(
     function(item) {
 
-      const quantity =
-        Number(item.quantity) || 0;
-
-
       const price =
         Number(item.price) || 0;
+
+
+      const quantity =
+        Number(item.quantity) || 0;
 
 
       const subtotal =
@@ -137,7 +169,7 @@ function displayCheckoutItems() {
 
 
       // =========================
-      // 圖片
+      // 商品圖片
       // =========================
 
       let imageHTML = "";
@@ -151,7 +183,6 @@ function displayCheckoutItems() {
           ).trim();
 
 
-        // Google Drive
         if (
           imageUrl.indexOf(
             "drive.google.com"
@@ -180,7 +211,7 @@ function displayCheckoutItems() {
 
           <img
             src="${imageUrl}"
-            alt="${item.name}"
+            alt="${item.name || ""}"
           >
 
         `;
@@ -261,15 +292,28 @@ function displayCheckoutItems() {
 
 
   // =========================
-  // 總額
+  // ⭐ 計算完成後直接寫入總額
   // =========================
 
   if (totalElement) {
 
-    totalElement.textContent =
-      formatPrice(total);
+    totalElement.innerHTML = `
+      ${formatPrice(total)}
+    `;
 
   }
+
+
+  console.log(
+    "結帳商品：",
+    cart
+  );
+
+
+  console.log(
+    "結帳總額：",
+    total
+  );
 
 }
 
