@@ -2,205 +2,169 @@
 <html lang="zh-Hant">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>我要下單｜ASTER4</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <link rel="stylesheet" href="style.css">
+  <title>ASTER4｜下單</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
 </head>
+
 
 <body>
 
-  <header>
 
-    <a href="index.html" class="logo">
-      ASTER4
-    </a>
+  <!-- Header -->
 
-    <a href="order-search.html" class="order-link">
-      訂單查詢
-    </a>
+  <header class="site-header">
+
+    <div class="header-inner">
+
+      <a
+        href="index.html"
+        class="logo"
+      >
+        ASTER4
+      </a>
+
+
+      <a
+        href="order-search.html"
+        class="order-link"
+      >
+        訂單查詢
+      </a>
+
+    </div>
 
   </header>
 
 
-  <main>
 
-    <section class="order-page">
+  <!-- Order Page -->
 
-      <div class="order-title">
-
-        <div class="product-group">
-          G001｜DONGHAE
-        </div>
-
-        <h1>我要下單</h1>
-
-        <p>
-          請確認商品與數量後填寫訂購資料。
-        </p>
-
-      </div>
+  <main class="order-page">
 
 
-      <form id="orderForm">
+    <section
+      id="order-product"
+      class="order-product"
+    >
+
+      載入商品中...
+
+    </section>
 
 
-        <!-- 商品 -->
 
-        <div class="form-section">
+    <section
+      class="order-form-section"
+    >
 
-          <h2>訂購商品</h2>
-
-          <div class="order-product">
-
-            <img
-              src="https://placehold.co/200x200"
-              alt="商品圖片"
-            >
-
-            <div>
-
-              <div class="product-name">
-                Official Character MD
-              </div>
-
-              <div class="product-price">
-                NT$ 850
-              </div>
+      <h2>
+        訂購資訊
+      </h2>
 
 
-              <div class="quantity-box">
+      <form
+        id="order-form"
+      >
 
-                <label for="quantity">
-                  數量
-                </label>
+        <div class="form-group">
 
-                <input
-                  type="number"
-                  id="quantity"
-                  name="quantity"
-                  value="1"
-                  min="1"
-                  required
-                >
+          <label>
+            姓名
+          </label>
 
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- 訂購人資料 -->
-
-        <div class="form-section">
-
-          <h2>訂購人資料</h2>
-
-
-          <div class="form-group">
-
-            <label for="name">
-              姓名
-            </label>
-
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="請輸入姓名"
-              required
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="email">
-              Email
-            </label>
-
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="請輸入 Email"
-              required
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="social">
-              社群帳號
-            </label>
-
-            <input
-              type="text"
-              id="social"
-              name="social"
-              placeholder="例如：Instagram / Threads"
-              required
-            >
-
-          </div>
-
-        </div>
-
-
-        <!-- 備註 -->
-
-        <div class="form-section">
-
-          <h2>備註</h2>
-
-          <div class="form-group">
-
-            <textarea
-              id="note"
-              name="note"
-              placeholder="有其他需求可以寫在這裡"
-              rows="5"
-            ></textarea>
-
-          </div>
-
-        </div>
-
-
-        <!-- 送出 -->
-
-        <div class="order-submit">
-
-          <button
-            type="submit"
-            class="buy-button"
+          <input
+            type="text"
+            id="customer-name"
+            required
           >
-            送出訂單
-          </button>
 
         </div>
+
+
+
+        <div class="form-group">
+
+          <label>
+            Email
+          </label>
+
+          <input
+            type="email"
+            id="customer-email"
+            required
+          >
+
+        </div>
+
+
+
+        <div class="form-group">
+
+          <label>
+            社群帳號
+          </label>
+
+          <input
+            type="text"
+            id="social-account"
+            required
+          >
+
+        </div>
+
+
+
+        <div class="form-group">
+
+          <label>
+            購買數量
+          </label>
+
+          <input
+            type="number"
+            id="quantity"
+            min="1"
+            value="1"
+            required
+          >
+
+        </div>
+
+
+
+        <button
+          type="submit"
+          class="submit-button"
+        >
+          送出訂單
+        </button>
 
 
       </form>
 
     </section>
 
+
   </main>
 
 
-  <footer>
-    © 2026 ASTER4
-  </footer>
 
-<script src="script.js"></script>
+  <script src="order.js"></script>
+
+
 </body>
 
 </html>
