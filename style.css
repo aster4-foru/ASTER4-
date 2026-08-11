@@ -468,3 +468,13 @@ text-align: center;
   }
 
 }
+/* Fix product card link style */
+
+a.product-card,
+a.product-card:link,
+a.product-card:visited,
+a.product-card:hover,
+a.product-card:active {
+  color: inherit;
+  text-decoration: none;
+}
