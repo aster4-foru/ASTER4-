@@ -1,1 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>訂單查詢｜ASTER4</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>
+
+    <a href="index.html" class="logo">
+      ASTER4
+    </a>
+
+    <a href="order-search.html" class="order-link">
+      訂單查詢
+    </a>
+
+  </header>
+
+
+  <main>
+
+    <section class="search-page">
+
+      <div class="search-title">
+
+        <h1>訂單查詢</h1>
+
+        <p>
+          請輸入訂購資訊，查詢目前的訂單狀態。
+        </p>
+
+      </div>
+
+
+      <form id="searchForm">
+
+        <div class="search-form">
+
+          <div class="form-group">
+
+            <label for="searchEmail">
+              Email
+            </label>
+
+            <input
+              type="email"
+              id="searchEmail"
+              name="email"
+              placeholder="請輸入下單時使用的 Email"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="searchName">
+              訂購者姓名
+            </label>
+
+            <input
+              type="text"
+              id="searchName"
+              name="name"
+              placeholder="請輸入訂購者姓名"
+              required
+            >
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="buy-button search-button"
+          >
+            查詢訂單
+          </button>
+
+        </div>
+
+      </form>
+
+
+      <div
+        id="searchResult"
+        class="search-result"
+      >
+
+        <!-- 查詢結果之後會顯示在這裡 -->
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    © 2026 ASTER4
+  </footer>
+
+
+</body>
+
+</html>
