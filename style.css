@@ -812,30 +812,37 @@ a.product-card:active {
    Cart Header
 ========================= */
 
-.cart-header {
+.cart-title {
   margin-bottom: 42px;
 }
 
-.cart-header .group-id {
+.cart-title span {
+  display: block;
+
   margin-bottom: 10px;
+
   font-size: 11px;
   letter-spacing: 2px;
+
   color: #999;
 }
 
-.cart-header h1 {
+.cart-title h1 {
   margin: 0;
+
   font-size: 34px;
   font-weight: 600;
+
   letter-spacing: 1px;
 }
 
-.cart-header p {
+.cart-title p {
   margin: 10px 0 0;
+
   font-size: 14px;
+
   color: #999;
 }
-
 
 /* =========================
    Cart List
