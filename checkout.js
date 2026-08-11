@@ -6,18 +6,47 @@ const CART_KEY = "ASTER4_CART";
 // 讀取購物車
 // =========================
 
+```javascript
 function getCart() {
+
+  const rawCart =
+    localStorage.getItem("ASTER4_CART");
+
+  console.log(
+    "ASTER4_CART 原始資料：",
+    rawCart
+  );
+
+
+  if (!rawCart) {
+
+    console.log(
+      "找不到 ASTER4_CART"
+    );
+
+    return [];
+
+  }
+
 
   try {
 
-    return JSON.parse(
-      localStorage.getItem(CART_KEY) || "[]"
+    const cart =
+      JSON.parse(rawCart);
+
+
+    console.log(
+      "ASTER4_CART 解析後：",
+      cart
     );
+
+
+    return cart;
 
   } catch (error) {
 
     console.error(
-      "購物車資料讀取失敗：",
+      "ASTER4_CART JSON 解析失敗：",
       error
     );
 
@@ -26,7 +55,7 @@ function getCart() {
   }
 
 }
-
+```
 
 // =========================
 // 金額格式
