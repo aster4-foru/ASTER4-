@@ -98,16 +98,23 @@ header {
   overflow: hidden;
   border: 1px solid #eeeeee;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-   .product-card {
   text-decoration: none;
   color: inherit;
+}
+
+.product-card:visited {
+  color: inherit;
+}
+
+.product-card:hover {
+  color: inherit;
+  text-decoration: none;
 }
 
 .product-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
-
 .product-image {
   width: 100%;
   aspect-ratio: 1 / 1;
