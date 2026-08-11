@@ -1,4 +1,4 @@
-javascript
+
 const CART_KEY = "ASTER4_CART";
 
 
