@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 
@@ -11,22 +10,870 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>ASTER4｜K-POP GOODS & ALBUMS</title>
+  <title>ASTER4｜K-POP GROUP ORDER</title>
 
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
+
+  <style>
+
+    /* =====================================================
+       ASTER4 HOME
+       米白 × 淡綠 × 韓系選物感
+    ===================================================== */
+
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    html {
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+      margin: 0;
+
+      background: #f5f1e8;
+
+      color: #292925;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Noto Sans TC",
+        "PingFang TC",
+        "Microsoft JhengHei",
+        sans-serif;
+
+      -webkit-font-smoothing: antialiased;
+    }
+
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    img {
+      max-width: 100%;
+    }
+
+
+    button {
+      font: inherit;
+    }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    .site-header {
+      position: relative;
+
+      width: 100%;
+
+      border-bottom: 1px solid #ddd8cc;
+
+      background: rgba(245, 241, 232, 0.96);
+    }
+
+
+    .header-inner {
+      width: min(1120px, calc(100% - 48px));
+
+      height: 76px;
+
+      margin: 0 auto;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+    }
+
+
+    .logo {
+      color: #3f4b3d;
+
+      font-size: 21px;
+
+      font-weight: 800;
+
+      letter-spacing: 0.13em;
+    }
+
+
+    .header-nav {
+      display: flex;
+
+      align-items: center;
+
+      gap: 30px;
+    }
+
+
+    .header-nav a {
+      color: #6d7069;
+
+      font-size: 12px;
+
+      transition:
+        color 0.2s ease;
+    }
+
+
+    .header-nav a:hover {
+      color: #3f4b3d;
+    }
+
+
+    #cart-count {
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      min-width: 18px;
+
+      height: 18px;
+
+      margin-left: 3px;
+
+      border-radius: 50%;
+
+      background: #7f927d;
+
+      color: #fff;
+
+      font-size: 9px;
+    }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero {
+      width: min(1120px, calc(100% - 48px));
+
+      min-height: 510px;
+
+      margin: 0 auto;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 60px;
+    }
+
+
+    .hero-content {
+      max-width: 600px;
+
+      padding: 70px 0;
+    }
+
+
+    .hero-label {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      margin-bottom: 24px;
+
+      color: #7c8d79;
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.24em;
+    }
+
+
+    .hero-label::before {
+      content: "";
+
+      width: 24px;
+
+      height: 1px;
+
+      background: #9caf98;
+    }
+
+
+    .hero h1 {
+      margin: 0;
+
+      color: #394437;
+
+      font-size: clamp(54px, 8vw, 88px);
+
+      line-height: 0.95;
+
+      font-weight: 800;
+
+      letter-spacing: -0.07em;
+    }
+
+
+    .hero-title-sub {
+      margin-top: 18px;
+
+      color: #74786f;
+
+      font-size: 15px;
+
+      line-height: 1.8;
+    }
+
+
+    .hero-description {
+      max-width: 450px;
+
+      margin: 26px 0 0;
+
+      color: #8a8982;
+
+      font-size: 13px;
+
+      line-height: 1.9;
+    }
+
+
+    .hero-button {
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      margin-top: 34px;
+
+      padding: 14px 25px;
+
+      border: 1px solid #71836e;
+
+      border-radius: 2px;
+
+      background: #71836e;
+
+      color: #fff;
+
+      font-size: 12px;
+
+      font-weight: 650;
+
+      letter-spacing: 0.06em;
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+
+    .hero-button:hover {
+      background: #5f705c;
+
+      transform: translateY(-1px);
+    }
+
+
+    /* =====================================================
+       HERO DECORATION
+    ===================================================== */
+
+    .hero-art {
+      position: relative;
+
+      width: 360px;
+
+      height: 360px;
+
+      flex-shrink: 0;
+    }
+
+
+    .hero-circle {
+      position: absolute;
+
+      width: 300px;
+
+      height: 300px;
+
+      top: 30px;
+
+      left: 30px;
+
+      border-radius: 50%;
+
+      background: #dce4d8;
+    }
+
+
+    .hero-circle-small {
+      position: absolute;
+
+      width: 95px;
+
+      height: 95px;
+
+      right: 0;
+
+      bottom: 10px;
+
+      border-radius: 50%;
+
+      background: #b9cbb5;
+    }
+
+
+    .hero-card {
+      position: absolute;
+
+      width: 215px;
+
+      height: 270px;
+
+      top: 45px;
+
+      left: 72px;
+
+      padding: 22px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: flex-end;
+
+      background: #fbfaf6;
+
+      border: 1px solid #ddd8cc;
+
+      box-shadow:
+        0 20px 45px rgba(75, 79, 67, 0.10);
+
+      transform: rotate(-4deg);
+    }
+
+
+    .hero-card-label {
+      color: #8a9786;
+
+      font-size: 9px;
+
+      letter-spacing: 0.2em;
+    }
+
+
+    .hero-card-title {
+      margin-top: 9px;
+
+      color: #42483f;
+
+      font-size: 22px;
+
+      line-height: 1.25;
+
+      font-weight: 700;
+    }
+
+
+    .hero-card-line {
+      width: 35px;
+
+      height: 1px;
+
+      margin-top: 16px;
+
+      background: #9daf99;
+    }
+
+
+    /* =====================================================
+       GROUP SECTION
+    ===================================================== */
+
+    .groups-section {
+      padding: 90px 0 100px;
+
+      background: #fbfaf6;
+    }
+
+
+    .section-inner {
+      width: min(1120px, calc(100% - 48px));
+
+      margin: 0 auto;
+    }
+
+
+    .section-top {
+      display: flex;
+
+      align-items: flex-end;
+
+      justify-content: space-between;
+
+      margin-bottom: 35px;
+    }
+
+
+    .section-label {
+      display: block;
+
+      margin-bottom: 8px;
+
+      color: #879582;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.25em;
+    }
+
+
+    .section-title {
+      margin: 0;
+
+      color: #394137;
+
+      font-size: 30px;
+
+      font-weight: 700;
+
+      letter-spacing: -0.04em;
+    }
+
+
+    .section-description {
+      margin: 0;
+
+      color: #99978f;
+
+      font-size: 12px;
+    }
+
+
+    /* =====================================================
+       PRODUCT / GROUP CARDS
+    ===================================================== */
+
+    #products {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 22px;
+    }
+
+
+    .product-card {
+      display: block;
+
+      overflow: hidden;
+
+      background: #f5f1e8;
+
+      border: 1px solid #e1ddd3;
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+
+    .product-card:hover {
+      transform: translateY(-4px);
+
+      box-shadow:
+        0 18px 35px rgba(75, 79, 67, 0.09);
+    }
+
+
+    .product-image-wrap {
+      position: relative;
+
+      width: 100%;
+
+      aspect-ratio: 1 / 1;
+
+      overflow: hidden;
+
+      background: #e6e2d9;
+    }
+
+
+    .product-image {
+      display: block;
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        transform 0.4s ease;
+    }
+
+
+    .product-card:hover .product-image {
+      transform: scale(1.03);
+    }
+
+
+    .product-image.no-image {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: #9b9a91;
+
+      font-size: 10px;
+
+      letter-spacing: 0.2em;
+    }
+
+
+    .product-info {
+      padding: 22px 22px 24px;
+    }
+
+
+    .product-group {
+      margin-bottom: 9px;
+
+      color: #7f917b;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.18em;
+    }
+
+
+    .product-name {
+      color: #3c403a;
+
+      font-size: 18px;
+
+      line-height: 1.45;
+
+      font-weight: 650;
+
+      letter-spacing: -0.02em;
+    }
+
+
+    .product-arrow {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      margin-top: 20px;
+
+      padding-top: 15px;
+
+      border-top: 1px solid #ddd8cc;
+
+      color: #8a8d85;
+
+      font-size: 10px;
+
+      letter-spacing: 0.08em;
+    }
+
+
+    .product-arrow span:last-child {
+      color: #647361;
+
+      font-size: 15px;
+    }
+
+
+    /* =====================================================
+       ORDER GUIDE
+    ===================================================== */
+
+    .guide-section {
+      padding: 90px 0;
+
+      background: #dfe7dc;
+    }
+
+
+    .guide-heading {
+      text-align: center;
+
+      margin-bottom: 50px;
+    }
+
+
+    .guide-heading .section-label {
+      margin-bottom: 10px;
+    }
+
+
+    .guide-heading h2 {
+      margin: 0;
+
+      color: #4a5748;
+
+      font-size: 30px;
+
+      font-weight: 700;
+    }
+
+
+    .guide-list {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 25px;
+    }
+
+
+    .guide-item {
+      padding: 28px;
+
+      border-top: 1px solid #aab9a6;
+    }
+
+
+    .guide-number {
+      color: #73856f;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.16em;
+    }
+
+
+    .guide-item h3 {
+      margin: 16px 0 8px;
+
+      color: #4b5549;
+
+      font-size: 18px;
+
+      font-weight: 650;
+    }
+
+
+    .guide-item p {
+      margin: 0;
+
+      color: #727b70;
+
+      font-size: 12px;
+
+      line-height: 1.8;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    .site-footer {
+      padding: 45px 0;
+
+      background: #4d594b;
+
+      color: #eef1eb;
+    }
+
+
+    .footer-inner {
+      width: min(1120px, calc(100% - 48px));
+
+      margin: 0 auto;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+    }
+
+
+    .footer-logo {
+      font-size: 18px;
+
+      font-weight: 800;
+
+      letter-spacing: 0.13em;
+    }
+
+
+    .footer-text {
+      color: #c9d0c6;
+
+      font-size: 10px;
+
+      line-height: 1.7;
+
+      text-align: right;
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 800px) {
+
+
+      .header-inner {
+        width: calc(100% - 30px);
+
+        height: 65px;
+      }
+
+
+      .header-nav {
+        gap: 15px;
+      }
+
+
+      .header-nav a {
+        font-size: 10px;
+      }
+
+
+      .hero {
+        width: calc(100% - 30px);
+
+        min-height: auto;
+
+        padding: 60px 0 75px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 40px;
+      }
+
+
+      .hero-content {
+        padding: 0;
+      }
+
+
+      .hero h1 {
+        font-size: 60px;
+      }
+
+
+      .hero-art {
+        width: 300px;
+
+        height: 300px;
+
+        align-self: center;
+
+        transform: scale(0.9);
+      }
+
+
+      .groups-section,
+      .guide-section {
+        padding: 65px 0 70px;
+      }
+
+
+      .section-inner {
+        width: calc(100% - 30px);
+      }
+
+
+      .section-top {
+        display: block;
+
+        margin-bottom: 28px;
+      }
+
+
+      .section-description {
+        margin-top: 10px;
+      }
+
+
+      #products {
+        grid-template-columns: 1fr;
+      }
+
+
+      .product-image-wrap {
+        aspect-ratio: 1.35 / 1;
+      }
+
+
+      .guide-list {
+        grid-template-columns: 1fr;
+
+        gap: 5px;
+      }
+
+
+      .guide-item {
+        padding: 23px 5px;
+      }
+
+
+      .footer-inner {
+        width: calc(100% - 30px);
+
+        display: block;
+      }
+
+
+      .footer-text {
+        margin-top: 15px;
+
+        text-align: left;
+      }
+
+    }
+
+  </style>
 
 </head>
+
 
 
 <body>
 
 
-  <!-- =========================
-       Header
-  ========================== -->
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
 
   <header class="site-header">
 
@@ -46,14 +893,10 @@
           首頁
         </a>
 
-
         <a href="cart.html">
           購物車
-          <span id="cart-count">
-            0
-          </span>
+          <span id="cart-count">0</span>
         </a>
-
 
         <a href="order-search.html">
           訂單查詢
@@ -67,63 +910,516 @@
 
 
 
-  <!-- =========================
-       Hero
-  ========================== -->
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
 
   <section class="hero">
 
-    <h1>
-      ASTER4
-    </h1>
 
-    <p>
-      K-POP GOODS &amp; ALBUMS
-    </p>
+    <div class="hero-content">
 
-  </section>
+      <div class="hero-label">
+        ASTER4 GROUP ORDER
+      </div>
 
 
+      <h1>
+        ASTER4
+      </h1>
 
-  <!-- =========================
-       Open Groups
-  ========================== -->
 
-  <section class="section">
+      <div class="hero-title-sub">
+        K-POP GROUP ORDER
+      </div>
 
-    <div class="section-title">
 
-      <h2>
-        開團中
-      </h2>
-
-      <p>
-        Currently Open
+      <p class="hero-description">
+        精選韓流專輯、官方周邊與限定商品，
+        用簡單安心的方式，陪你一起把喜歡的收藏帶回家。
       </p>
 
+
+      <a
+        href="#groups"
+        class="hero-button"
+      >
+        查看目前開團
+      </a>
+
     </div>
 
 
-    <!--
-      商品卡片會由 script.js
-      從 GAS 自動載入
-    -->
 
-    <div
-      id="products"
-      class="product-grid"
-    >
+    <div class="hero-art">
+
+      <div class="hero-circle"></div>
+
+      <div class="hero-circle-small"></div>
+
+
+      <div class="hero-card">
+
+        <div class="hero-card-label">
+          K-POP / GOODS
+        </div>
+
+        <div class="hero-card-title">
+          Collect<br>
+          What You Love.
+        </div>
+
+        <div class="hero-card-line"></div>
+
+      </div>
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =====================================================
+       OPEN GROUPS
+  ====================================================== -->
+
+  <section
+    class="groups-section"
+    id="groups"
+  >
+
+
+    <div class="section-inner">
+
+
+      <div class="section-top">
+
+        <div>
+
+          <span class="section-label">
+            OPEN GROUP
+          </span>
+
+          <h2 class="section-title">
+            目前開團
+          </h2>
+
+        </div>
+
+
+        <p class="section-description">
+          選擇你想參加的團次
+        </p>
+
+      </div>
+
+
+
+      <!-- ===============================================
+           GAS 商品卡片
+           JavaScript 會自動放進這裡
+      ================================================ -->
+
+      <div id="products"></div>
+
+
     </div>
 
   </section>
 
 
 
-  <!-- =========================
-       Script
-  ========================== -->
+  <!-- =====================================================
+       ORDER GUIDE
+  ====================================================== -->
 
-  <script src="script.js"></script>
+  <section class="guide-section">
+
+
+    <div class="section-inner">
+
+
+      <div class="guide-heading">
+
+        <span class="section-label">
+          ORDER GUIDE
+        </span>
+
+        <h2>
+          簡單三步驟，完成你的訂單
+        </h2>
+
+      </div>
+
+
+
+      <div class="guide-list">
+
+
+        <div class="guide-item">
+
+          <div class="guide-number">
+            01 / CHOOSE
+          </div>
+
+          <h3>
+            選擇商品
+          </h3>
+
+          <p>
+            選擇目前開放中的團次，
+            找到你想收藏的專輯或周邊。
+          </p>
+
+        </div>
+
+
+
+        <div class="guide-item">
+
+          <div class="guide-number">
+            02 / ORDER
+          </div>
+
+          <h3>
+            填寫訂單
+          </h3>
+
+          <p>
+            將商品加入購物車，
+            填寫你的訂購與取貨資訊。
+          </p>
+
+        </div>
+
+
+
+        <div class="guide-item">
+
+          <div class="guide-number">
+            03 / COMPLETE
+          </div>
+
+          <h3>
+            完成訂購
+          </h3>
+
+          <p>
+            確認訂單內容與金額，
+            完成付款後等待商品到貨。
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer class="site-footer">
+
+    <div class="footer-inner">
+
+      <div class="footer-logo">
+        ASTER4
+      </div>
+
+
+      <div class="footer-text">
+        K-POP GROUP ORDER<br>
+        © ASTER4
+      </div>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- =====================================================
+       GAS API
+  ====================================================== -->
+
+  <script>
+
+    const API_URL =
+      "https://script.google.com/macros/s/AKfycbypJDVSs2untkfyJ1upJZQgpRfDSclLEvFCt9RbUt48QisXp5HvqMcZRmgqnB-KIKh6/exec";
+
+
+    // ===================================================
+    // 載入首頁團次
+    // ===================================================
+
+    async function loadHomeProducts() {
+
+      try {
+
+        const response =
+          await fetch(
+            API_URL + "?action=home"
+          );
+
+
+        const data =
+          await response.json();
+
+
+        console.log(
+          "GAS API 回傳：",
+          data
+        );
+
+
+        if (!data.success) {
+
+          console.error(
+            "取得商品失敗：",
+            data.message
+          );
+
+          return;
+
+        }
+
+
+        displayHomeProducts(
+          data.products
+        );
+
+
+      } catch (error) {
+
+        console.error(
+          "API 連線失敗：",
+          error
+        );
+
+      }
+
+    }
+
+
+    // ===================================================
+    // 首頁團次卡片
+    // ===================================================
+
+    function displayHomeProducts(products) {
+
+      const container =
+        document.getElementById(
+          "products"
+        );
+
+
+      if (!container) {
+
+        return;
+
+      }
+
+
+      container.innerHTML = "";
+
+
+      if (
+        !products ||
+        products.length === 0
+      ) {
+
+        container.innerHTML = `
+
+          <div
+            style="
+              padding:60px 20px;
+              text-align:center;
+              color:#999;
+              font-size:13px;
+            "
+          >
+            目前沒有開放中的團次
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      products.forEach(
+        function(product) {
+
+
+          const card =
+            document.createElement("a");
+
+
+          card.href =
+            "./product.html?group=" +
+            encodeURIComponent(
+              product.groupId
+            );
+
+
+          card.className =
+            "product-card";
+
+
+          card.innerHTML = `
+
+            <div class="product-image-wrap">
+
+              ${
+                product.image
+
+                ? `
+
+                  <img
+                    class="product-image"
+                    src="${product.image}"
+                    alt="${product.name || "ASTER4"}"
+                  >
+
+                `
+
+                : `
+
+                  <div
+                    class="
+                      product-image
+                      no-image
+                    "
+                  >
+                    ASTER4
+                  </div>
+
+                `
+              }
+
+            </div>
+
+
+            <div class="product-info">
+
+              <!--
+                ⚠️ 這裡故意不顯示 groupId
+              -->
+
+              <div class="product-name">
+                ${product.name || ""}
+              </div>
+
+
+              <div class="product-arrow">
+
+                <span>
+                  VIEW GROUP
+                </span>
+
+                <span>
+                  →
+                </span>
+
+              </div>
+
+            </div>
+
+          `;
+
+
+          container.appendChild(
+            card
+          );
+
+
+        }
+      );
+
+    }
+
+
+    // ===================================================
+    // 購物車數量
+    // ===================================================
+
+    function updateCartCount() {
+
+      try {
+
+        const cart =
+          JSON.parse(
+            localStorage.getItem(
+              "ASTER4_CART"
+            ) || "[]"
+          );
+
+
+        const count =
+          cart.reduce(
+            function(total, item) {
+
+              return total +
+                Number(
+                  item.quantity || 0
+                );
+
+            },
+            0
+          );
+
+
+        const element =
+          document.getElementById(
+            "cart-count"
+          );
+
+
+        if (element) {
+
+          element.textContent =
+            count;
+
+        }
+
+
+      } catch (error) {
+
+        console.error(
+          "購物車數量讀取失敗：",
+          error
+        );
+
+      }
+
+    }
+
+
+    // ===================================================
+    // 頁面載入
+    // ===================================================
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function() {
+
+        loadHomeProducts();
+
+        updateCartCount();
+
+      }
+    );
+
+  </script>
 
 
 </body>
