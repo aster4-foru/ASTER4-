@@ -98,6 +98,10 @@ header {
   overflow: hidden;
   border: 1px solid #eeeeee;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+   .product-card {
+  text-decoration: none;
+  color: inherit;
+}
 }
 
 .product-card:hover {
