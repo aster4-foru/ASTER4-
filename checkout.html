@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="zh-Hant">
 
@@ -15,12 +16,6 @@
 
   <style>
 
-    /* =====================================================
-       ASTER4 CHECKOUT
-       獨立頁面樣式
-    ===================================================== */
-
-
     * {
       box-sizing: border-box;
     }
@@ -34,11 +29,10 @@
 
     body {
       margin: 0;
-      padding: 0;
 
       background: #f7f5f1;
 
-      color: #242424;
+      color: #252525;
 
       font-family:
         -apple-system,
@@ -71,31 +65,30 @@
     ===================================================== */
 
     .site-header {
-      width: 100%;
+      border-bottom: 1px solid #dedbd5;
 
       background: #f7f5f1;
-
-      border-bottom: 1px solid #dedbd5;
     }
 
 
     .header-inner {
-      width: min(1180px, calc(100% - 48px));
+      width: min(1080px, calc(100% - 40px));
 
-      height: 76px;
+      height: 70px;
 
       margin: 0 auto;
 
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
     }
 
 
     .logo {
-      color: #1f1f1f;
+      font-size: 19px;
 
-      font-size: 20px;
       font-weight: 800;
 
       letter-spacing: 0.12em;
@@ -104,37 +97,36 @@
 
     .header-nav {
       display: flex;
+
       align-items: center;
 
-      gap: 32px;
+      gap: 28px;
     }
 
 
     .header-nav a {
-      color: #666;
+      color: #777;
 
       font-size: 12px;
-      font-weight: 500;
-
-      transition: color 0.2s ease;
     }
 
 
     .header-nav a:hover {
-      color: #111;
+      color: #222;
     }
 
 
     #cart-count {
       display: inline-flex;
 
+      align-items: center;
+
+      justify-content: center;
+
       min-width: 18px;
       height: 18px;
 
-      margin-left: 4px;
-
-      align-items: center;
-      justify-content: center;
+      margin-left: 3px;
 
       border-radius: 50%;
 
@@ -147,15 +139,15 @@
 
 
     /* =====================================================
-       MAIN
+       PAGE
     ===================================================== */
 
     .checkout-page {
-      width: min(1080px, calc(100% - 48px));
+      width: min(960px, calc(100% - 40px));
 
       margin: 0 auto;
 
-      padding: 76px 0 100px;
+      padding: 58px 0 80px;
     }
 
 
@@ -164,7 +156,7 @@
     ===================================================== */
 
     .checkout-hero {
-      margin-bottom: 72px;
+      margin-bottom: 52px;
     }
 
 
@@ -172,76 +164,74 @@
       display: flex;
 
       align-items: center;
+
       justify-content: space-between;
 
-      margin-bottom: 25px;
+      margin-bottom: 18px;
 
-      color: #9b9892;
-
-      font-size: 10px;
-      font-weight: 600;
-
-      letter-spacing: 0.24em;
-    }
-
-
-    .checkout-hero h1 {
-      margin: 0;
-
-      color: #1d1d1d;
-
-      font-size: clamp(48px, 7vw, 76px);
-
-      line-height: 0.95;
-
-      font-weight: 750;
-
-      letter-spacing: -0.06em;
-    }
-
-
-    .checkout-hero p {
-      margin: 23px 0 0;
-
-      color: #898680;
-
-      font-size: 14px;
-
-      line-height: 1.7;
-    }
-
-
-    /* =====================================================
-       SECTION HEADING
-    ===================================================== */
-
-    .section-heading {
-      padding-bottom: 19px;
-
-      border-bottom: 1px solid #d8d5cf;
-    }
-
-
-    .section-heading span {
-      display: block;
-
-      margin-bottom: 8px;
-
-      color: #9a9791;
+      color: #99958e;
 
       font-size: 9px;
+
       font-weight: 650;
 
       letter-spacing: 0.25em;
     }
 
 
+    .checkout-hero h1 {
+      margin: 0;
+
+      font-size: clamp(38px, 5vw, 54px);
+
+      line-height: 1;
+
+      font-weight: 750;
+
+      letter-spacing: -0.045em;
+    }
+
+
+    .checkout-hero p {
+      margin: 15px 0 0;
+
+      color: #898680;
+
+      font-size: 13px;
+    }
+
+
+    /* =====================================================
+       SECTION TITLE
+    ===================================================== */
+
+    .section-heading {
+      padding-bottom: 17px;
+
+      border-bottom: 1px solid #d7d4ce;
+    }
+
+
+    .section-heading span {
+      display: block;
+
+      margin-bottom: 7px;
+
+      color: #9b9892;
+
+      font-size: 9px;
+
+      font-weight: 650;
+
+      letter-spacing: 0.24em;
+    }
+
+
     .section-heading h2 {
       margin: 0;
 
-      color: #252525;
+      font-size: 20px;
 
-      font-size: 22px;
       font-weight: 650;
 
       letter-spacing: -0.025em;
@@ -249,13 +239,8 @@
 
 
     /* =====================================================
-       ORDER
+       ORDER DETAIL
     ===================================================== */
-
-    .checkout-order {
-      margin: 0;
-    }
-
 
     .checkout-items {
       width: 100%;
@@ -265,79 +250,40 @@
     .checkout-item {
       display: grid;
 
-      grid-template-columns: 150px minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr) auto;
 
-      gap: 30px;
+      column-gap: 40px;
 
-      padding: 30px 0;
+      padding: 24px 0;
 
       border-bottom: 1px solid #dedbd5;
     }
 
 
-    .checkout-item-image {
-      width: 150px;
-      height: 150px;
-
-      overflow: hidden;
-
-      background: #ebe8e2;
-    }
-
-
-    .checkout-item-image img {
-      display: block;
-
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-    }
-
-
-    .checkout-no-image {
-      width: 100%;
-      height: 100%;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      color: #aaa;
-
-      font-size: 10px;
-
-      letter-spacing: 0.2em;
-    }
-
-
     .checkout-item-info {
       min-width: 0;
-
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: center;
     }
 
 
     .checkout-item-group {
-      margin-bottom: 5px;
+      display: inline-block;
 
-      color: #aaa;
+      margin-bottom: 7px;
+
+      color: #8d8982;
 
       font-size: 10px;
 
-      letter-spacing: 0.12em;
+      font-weight: 650;
+
+      letter-spacing: 0.08em;
     }
 
 
     .checkout-item-channel {
-      margin-bottom: 8px;
+      margin-bottom: 5px;
 
-      color: #888;
+      color: #999;
 
       font-size: 11px;
     }
@@ -346,24 +292,22 @@
     .checkout-item-info h3 {
       margin: 0;
 
-      color: #242424;
+      color: #252525;
 
-      font-size: 20px;
+      font-size: 17px;
 
-      line-height: 1.45;
+      line-height: 1.5;
 
       font-weight: 650;
-
-      letter-spacing: -0.025em;
     }
 
 
     .checkout-item-version {
-      margin-top: 7px;
+      margin-top: 5px;
 
       color: #777;
 
-      font-size: 13px;
+      font-size: 12px;
     }
 
 
@@ -371,23 +315,53 @@
       display: flex;
 
       align-items: center;
-      justify-content: space-between;
 
-      margin-top: 25px;
+      gap: 20px;
+
+      margin-top: 15px;
     }
 
 
     .checkout-item-bottom span {
-      color: #999;
+      color: #8e8a83;
 
       font-size: 12px;
     }
 
 
     .checkout-item-bottom strong {
+      display: none;
+    }
+
+
+    /* =====================================================
+       ITEM PRICE
+    ===================================================== */
+
+    .checkout-item-price {
+      align-self: center;
+
+      text-align: right;
+
+      white-space: nowrap;
+    }
+
+
+    .checkout-item-price small {
+      display: block;
+
+      margin-bottom: 5px;
+
+      color: #999;
+
+      font-size: 10px;
+    }
+
+
+    .checkout-item-price strong {
       color: #222;
 
-      font-size: 17px;
+      font-size: 18px;
 
       font-weight: 700;
     }
@@ -401,44 +375,42 @@
       display: flex;
 
       align-items: flex-end;
+
       justify-content: space-between;
 
-      padding: 30px 0;
+      padding: 27px 0;
 
-      margin: 42px 0 90px;
+      margin-bottom: 75px;
 
-      border-top: 2px solid #252525;
-
-      border-bottom: 1px solid #d8d5cf;
+      border-bottom: 1px solid #d4d1ca;
     }
 
 
     .checkout-total-label > span {
       display: block;
 
-      margin-bottom: 12px;
+      margin-bottom: 9px;
 
-      color: #9a9791;
+      color: #99958e;
 
       font-size: 9px;
+
       font-weight: 650;
 
-      letter-spacing: 0.25em;
+      letter-spacing: 0.24em;
     }
 
 
     .checkout-total-label p {
       margin: 0;
 
-      color: #666;
+      color: #777;
 
-      font-size: 13px;
+      font-size: 12px;
     }
 
 
     .checkout-total-label p strong {
-      margin-left: 8px;
-
       color: #222;
 
       font-weight: 650;
@@ -453,24 +425,22 @@
     .checkout-total-price span {
       display: block;
 
-      margin-bottom: 7px;
+      margin-bottom: 5px;
 
-      color: #8d8982;
+      color: #88847d;
 
       font-size: 11px;
     }
 
 
     .checkout-total-price strong {
-      color: #1e1e1e;
+      color: #1f1f1f;
 
-      font-size: 36px;
-
-      line-height: 1;
+      font-size: 30px;
 
       font-weight: 750;
 
-      letter-spacing: -0.05em;
+      letter-spacing: -0.04em;
     }
 
 
@@ -479,12 +449,12 @@
     ===================================================== */
 
     .checkout-information {
-      margin: 0;
+      margin-bottom: 0;
     }
 
 
     .checkout-form {
-      padding-top: 38px;
+      padding-top: 32px;
     }
 
 
@@ -493,25 +463,21 @@
 
       grid-template-columns: 1fr 1fr;
 
-      gap: 34px;
+      gap: 35px;
 
-      margin-bottom: 32px;
-    }
-
-
-    .form-group {
-      min-width: 0;
+      margin-bottom: 28px;
     }
 
 
     .form-group label {
       display: block;
 
-      margin-bottom: 10px;
+      margin-bottom: 9px;
 
-      color: #444;
+      color: #4c4945;
 
       font-size: 11px;
+
       font-weight: 650;
     }
 
@@ -523,7 +489,7 @@
 
       width: 100%;
 
-      padding: 13px 0;
+      padding: 11px 0;
 
       border: 0;
 
@@ -537,10 +503,7 @@
 
       color: #222;
 
-      font-size: 14px;
-
-      transition:
-        border-color 0.2s ease;
+      font-size: 13px;
     }
 
 
@@ -558,16 +521,14 @@
 
 
     .form-group textarea {
-      min-height: 110px;
-
-      padding-top: 13px;
+      min-height: 90px;
 
       resize: vertical;
     }
 
 
     .form-note {
-      margin-top: 5px;
+      margin-top: 3px;
     }
 
 
@@ -579,15 +540,16 @@
       display: flex;
 
       align-items: center;
+
       justify-content: space-between;
 
-      gap: 30px;
+      gap: 25px;
 
-      margin-top: 48px;
+      margin-top: 40px;
 
-      padding-top: 25px;
+      padding-top: 23px;
 
-      border-top: 1px solid #d8d5cf;
+      border-top: 1px solid #d7d4ce;
     }
 
 
@@ -597,36 +559,31 @@
       color: #999;
 
       font-size: 11px;
-
-      line-height: 1.6;
     }
 
 
     .checkout-submit {
       flex-shrink: 0;
 
-      min-width: 230px;
+      min-width: 220px;
 
-      padding: 17px 30px;
+      padding: 15px 28px;
 
       border: 0;
 
       border-radius: 2px;
 
-      background: #222;
+      background: #242424;
 
       color: #fff;
 
       font-size: 12px;
+
       font-weight: 650;
 
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
 
       cursor: pointer;
-
-      transition:
-        background 0.2s ease,
-        transform 0.15s ease;
     }
 
 
@@ -635,17 +592,12 @@
     }
 
 
-    .checkout-submit:active {
-      transform: translateY(1px);
-    }
-
-
     /* =====================================================
        EMPTY
     ===================================================== */
 
     .checkout-empty {
-      padding: 70px 0;
+      padding: 55px 0;
 
       text-align: center;
     }
@@ -656,16 +608,14 @@
 
       color: #999;
 
-      font-size: 14px;
+      font-size: 13px;
     }
 
 
     .back-to-shop {
       display: inline-block;
 
-      margin-top: 18px;
-
-      color: #222;
+      margin-top: 15px;
 
       font-size: 12px;
 
@@ -677,77 +627,51 @@
        MOBILE
     ===================================================== */
 
-    @media (max-width: 700px) {
+    @media (max-width: 650px) {
 
 
       .header-inner {
-        width: calc(100% - 30px);
+        width: calc(100% - 28px);
 
-        height: 65px;
-      }
-
-
-      .logo {
-        font-size: 17px;
+        height: 62px;
       }
 
 
       .header-nav {
-        gap: 15px;
+        gap: 14px;
       }
 
 
       .header-nav a {
-        font-size: 11px;
+        font-size: 10px;
       }
 
 
       .checkout-page {
-        width: calc(100% - 30px);
+        width: calc(100% - 28px);
 
-        padding: 45px 0 65px;
+        padding-top: 42px;
+
+        padding-bottom: 55px;
       }
 
 
       .checkout-hero {
-        margin-bottom: 48px;
-      }
-
-
-      .checkout-hero-top {
-        margin-bottom: 20px;
+        margin-bottom: 42px;
       }
 
 
       .checkout-hero h1 {
-        font-size: 45px;
-      }
-
-
-      .checkout-hero p {
-        margin-top: 17px;
-
-        font-size: 13px;
-      }
-
-
-      .section-heading h2 {
-        font-size: 20px;
+        font-size: 40px;
       }
 
 
       .checkout-item {
-        grid-template-columns: 88px minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr) auto;
 
-        gap: 16px;
+        column-gap: 15px;
 
         padding: 21px 0;
-      }
-
-
-      .checkout-item-image {
-        width: 88px;
-        height: 88px;
       }
 
 
@@ -756,35 +680,20 @@
       }
 
 
-      .checkout-item-version {
-        font-size: 12px;
-      }
-
-
-      .checkout-item-bottom {
-        margin-top: 14px;
-      }
-
-
-      .checkout-item-bottom span {
-        font-size: 10px;
-      }
-
-
-      .checkout-item-bottom strong {
-        font-size: 14px;
+      .checkout-item-price strong {
+        font-size: 15px;
       }
 
 
       .checkout-total-area {
-        margin: 28px 0 60px;
+        margin-bottom: 55px;
 
-        padding: 25px 0;
+        padding: 23px 0;
       }
 
 
       .checkout-total-price strong {
-        font-size: 28px;
+        font-size: 25px;
       }
 
 
@@ -802,7 +711,7 @@
 
         align-items: stretch;
 
-        margin-top: 35px;
+        margin-top: 32px;
       }
 
 
@@ -821,9 +730,7 @@
 <body>
 
 
-  <!-- =====================================================
-       HEADER
-  ====================================================== -->
+  <!-- HEADER -->
 
   <header class="site-header">
 
@@ -859,10 +766,6 @@
   </header>
 
 
-
-  <!-- =====================================================
-       MAIN
-  ====================================================== -->
 
   <main class="checkout-page">
 
@@ -1128,3 +1031,4 @@
 </body>
 
 </html>
+```
