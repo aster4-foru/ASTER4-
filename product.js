@@ -28,13 +28,13 @@ async function loadProducts() {
     getGroupId();
 
 
-  // 沒有團次 ID
   if (!groupId) {
 
     document.getElementById(
       "group-info"
-    ).textContent =
-      "找不到團次";
+    ).innerHTML = `
+      <h1>找不到團次</h1>
+    `;
 
     return;
 
@@ -65,8 +65,9 @@ async function loadProducts() {
 
       document.getElementById(
         "group-info"
-      ).textContent =
-        data.message || "取得商品失敗";
+      ).innerHTML = `
+        <h1>商品資料載入失敗</h1>
+      `;
 
       return;
 
@@ -89,8 +90,9 @@ async function loadProducts() {
 
     document.getElementById(
       "group-info"
-    ).textContent =
-      "商品資料載入失敗";
+    ).innerHTML = `
+      <h1>商品資料載入失敗</h1>
+    `;
 
   }
 
@@ -121,13 +123,14 @@ function displayProducts(
   if (!products ||
       products.length === 0) {
 
-    title.textContent =
-      groupId;
-
-    container.innerHTML = `
-      <div class="empty-message">
-        目前沒有商品
+    title.innerHTML = `
+      <div class="group-id">
+        ${groupId}
       </div>
+
+      <h1>
+        目前沒有商品
+      </h1>
     `;
 
     return;
@@ -135,50 +138,167 @@ function displayProducts(
   }
 
 
-  // 頁面標題
+  // =========================
+  // 團次標題
+  // =========================
+
   title.innerHTML = `
-    <div class="product-group-id">
+
+    <div class="group-id">
       ${groupId}
     </div>
 
     <h1>
       ${products[0].name}
     </h1>
+
+    <p>
+      Choose your version
+    </p>
+
   `;
 
 
   container.innerHTML = "";
 
 
+  // =========================
+  // 商品卡片
+  // =========================
+
   products.forEach(
     function(product) {
 
       const card =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
 
       card.className =
         "product-item";
 
 
+      // =========================
+      // 商品圖片
+      // =========================
+
+      let imageHTML = "";
+
+
+      if (product.image) {
+
+        let imageUrl =
+          String(product.image)
+            .trim();
+
+
+        // Google Drive
+        if (
+          imageUrl.indexOf(
+            "drive.google.com"
+          ) !== -1
+        ) {
+
+          const match =
+            imageUrl.match(
+              /\/d\/([^\/]+)/
+            );
+
+
+          if (match) {
+
+            imageUrl =
+              "https://drive.google.com/thumbnail?id=" +
+              match[1] +
+              "&sz=w1000";
+
+          }
+
+        }
+
+
+        imageHTML = `
+          <img
+            src="${imageUrl}"
+            alt="${product.name}"
+          >
+        `;
+
+      } else {
+
+        imageHTML = `
+          <div class="no-image">
+            ASTER4
+          </div>
+        `;
+
+      }
+
+
+      // =========================
+      // 狀態
+      // =========================
+
+      let statusClass =
+        "";
+
+
+      if (
+        product.status === "開放"
+      ) {
+
+        statusClass =
+          "is-open";
+
+      } else {
+
+        statusClass =
+          "is-closed";
+
+      }
+
+
+      // =========================
+      // 購買按鈕
+      // =========================
+
+      let buttonHTML = "";
+
+
+      if (
+        product.status === "開放"
+      ) {
+
+        buttonHTML = `
+          <a
+            href="order.html?product=${encodeURIComponent(product.productId)}"
+            class="buy-button"
+          >
+            我要購買
+          </a>
+        `;
+
+      } else {
+
+        buttonHTML = `
+          <div class="disabled-button">
+            ${product.status}
+          </div>
+        `;
+
+      }
+
+
+      // =========================
+      // 卡片內容
+      // =========================
+
       card.innerHTML = `
 
         <div class="product-item-image">
 
-          ${
-            product.image
-            ? `
-              <img
-                src="${product.image}"
-                alt="${product.name}"
-              >
-            `
-            : `
-              <div class="no-image">
-                ASTER4
-              </div>
-            `
-          }
+          ${imageHTML}
 
         </div>
 
@@ -190,9 +310,9 @@ function displayProducts(
           </div>
 
 
-          <div class="product-item-name">
+          <h2 class="product-item-name">
             ${product.name}
-          </div>
+          </h2>
 
 
           <div class="product-version">
@@ -201,9 +321,16 @@ function displayProducts(
 
 
           <div
-            class="product-status status-${product.status}"
+            class="product-status ${statusClass}"
           >
             ${product.status}
+          </div>
+
+
+          <div class="product-action">
+
+            ${buttonHTML}
+
           </div>
 
         </div>
@@ -211,7 +338,9 @@ function displayProducts(
       `;
 
 
-      container.appendChild(card);
+      container.appendChild(
+        card
+      );
 
     }
   );
