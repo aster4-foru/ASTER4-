@@ -1,10 +1,11 @@
+```javascript
 const API_URL =
   "https://script.google.com/macros/s/AKfycbypJDVSs2untkfyJ1upJZQgpRfDSclLEvFCt9RbUt48QisXp5HvqMcZRmgqnB-KIKh6/exec";
 
 
-// =========================
+// =====================================================
 // 取得網址中的團次 ID
-// =========================
+// =====================================================
 
 function getGroupId() {
 
@@ -18,9 +19,9 @@ function getGroupId() {
 }
 
 
-// =========================
+// =====================================================
 // 載入商品
-// =========================
+// =====================================================
 
 async function loadProducts() {
 
@@ -43,9 +44,9 @@ async function loadProducts() {
 
   try {
 
-    // =========================
+    // =================================================
     // 同時取得商品資料＋團次資料
-    // =========================
+    // =================================================
 
     const productResponse =
       await fetch(
@@ -95,9 +96,9 @@ async function loadProducts() {
     }
 
 
-    // =========================
-    // 找到目前團次
-    // =========================
+    // =================================================
+    // 找到目前團次名稱
+    // =================================================
 
     let groupName =
       groupId;
@@ -112,12 +113,10 @@ async function loadProducts() {
         homeData.products.find(
           function(item) {
 
-            return String(
-              item.groupId
-            ).trim() ===
-            String(
-              groupId
-            ).trim();
+            return (
+              String(item.groupId).trim() ===
+              String(groupId).trim()
+            );
 
           }
         );
@@ -159,9 +158,9 @@ async function loadProducts() {
 }
 
 
-// =========================
+// =====================================================
 // 顯示商品
-// =========================
+// =====================================================
 
 function displayProducts(
   products,
@@ -181,16 +180,16 @@ function displayProducts(
     );
 
 
+  // ===================================================
+  // 沒有商品
+  // ===================================================
+
   if (
     !products ||
     products.length === 0
   ) {
 
     title.innerHTML = `
-
-      <div class="group-id">
-        ${groupId}
-      </div>
 
       <h1>
         ${groupName}
@@ -207,15 +206,11 @@ function displayProducts(
   }
 
 
-  // =========================
+  // ===================================================
   // 團次標題
-  // =========================
+  // ===================================================
 
   title.innerHTML = `
-
-    <div class="group-id">
-      ${groupId}
-    </div>
 
     <h1>
       ${groupName}
@@ -231,12 +226,13 @@ function displayProducts(
   container.innerHTML = "";
 
 
-  // =========================
+  // ===================================================
   // 商品卡片
-  // =========================
+  // ===================================================
 
   products.forEach(
     function(product) {
+
 
       const card =
         document.createElement(
@@ -248,9 +244,9 @@ function displayProducts(
         "product-item";
 
 
-      // =========================
+      // =================================================
       // 商品圖片
-      // =========================
+      // =================================================
 
       let imageHTML = "";
 
@@ -292,7 +288,7 @@ function displayProducts(
 
           <img
             src="${imageUrl}"
-            alt="${product.name}"
+            alt="${product.name || ""}"
           >
 
         `;
@@ -310,9 +306,9 @@ function displayProducts(
       }
 
 
-      // =========================
+      // =================================================
       // 狀態
-      // =========================
+      // =================================================
 
       let statusClass =
         "";
@@ -333,9 +329,9 @@ function displayProducts(
       }
 
 
-      // =========================
+      // =================================================
       // 購買按鈕
-      // =========================
+      // =================================================
 
       let buttonHTML = "";
 
@@ -369,11 +365,28 @@ function displayProducts(
       }
 
 
-      // =========================
-      // 卡片內容
-      // =========================
+      // =================================================
+      // ⭐ 卡片內容
+      //
+      // 重要：
+      // product-action 已經移到 product-item-info 外面
+      //
+      // 結構：
+      //
+      // product-item
+      // ├── image
+      // ├── info
+      // │   ├── channel
+      // │   ├── name
+      // │   ├── version
+      // │   └── status
+      // └── action
+      //
+      // =================================================
 
       card.innerHTML = `
+
+        <!-- 商品圖片 -->
 
         <div class="product-item-image">
 
@@ -382,35 +395,63 @@ function displayProducts(
         </div>
 
 
+        <!-- 商品資訊 -->
+
         <div class="product-item-info">
 
+
+          <!-- 通路 -->
+
           <div class="product-channel">
-            ${product.channel}
+
+            ${product.channel || ""}
+
           </div>
 
 
+          <!-- 商品名稱 -->
+
           <h2 class="product-item-name">
-            ${product.name}
+
+            ${product.name || ""}
+
           </h2>
 
 
-          <div class="product-version">
-            ${product.version}
-          </div>
+          <!-- 版本 -->
 
+          ${
+            product.version
+              ? `
+                <div class="product-version">
+                  ${product.version}
+                </div>
+              `
+              : ""
+          }
+
+
+          <!-- 商品狀態 -->
 
           <div
             class="product-status ${statusClass}"
           >
-            ${product.status}
-          </div>
 
-
-          <div class="product-action">
-
-            ${buttonHTML}
+            ${product.status || ""}
 
           </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             最右側操作區
+        ================================================= -->
+
+        <div class="product-action">
+
+          ${buttonHTML}
 
         </div>
 
@@ -427,9 +468,9 @@ function displayProducts(
 }
 
 
-// =========================
+// =====================================================
 // 頁面載入
-// =========================
+// =====================================================
 
 document.addEventListener(
   "DOMContentLoaded",
@@ -441,11 +482,13 @@ document.addEventListener(
 );
 
 
-// =========================
+// =====================================================
 // 加入購物車
-// =========================
+// =====================================================
 
-async function addToCart(productId) {
+async function addToCart(
+  productId
+) {
 
   const cart =
     JSON.parse(
@@ -489,9 +532,9 @@ async function addToCart(productId) {
       data.product;
 
 
-    // =========================
+    // =================================================
     // 檢查是否已在購物車
-    // =========================
+    // =================================================
 
     const existing =
       cart.find(
@@ -548,9 +591,9 @@ async function addToCart(productId) {
     }
 
 
-    // =========================
+    // =================================================
     // 儲存購物車
-    // =========================
+    // =================================================
 
     localStorage.setItem(
       "ASTER4_CART",
@@ -558,9 +601,16 @@ async function addToCart(productId) {
     );
 
 
-    // =========================
+    // =================================================
+    // 更新購物車數量
+    // =================================================
+
+    updateCartCount();
+
+
+    // =================================================
     // 提示
-    // =========================
+    // =================================================
 
     alert(
       "已加入購物車！"
@@ -570,6 +620,7 @@ async function addToCart(productId) {
   } catch (error) {
 
     console.error(
+      "加入購物車失敗：",
       error
     );
 
@@ -581,3 +632,62 @@ async function addToCart(productId) {
   }
 
 }
+
+
+// =====================================================
+// 更新購物車數量
+// =====================================================
+
+function updateCartCount() {
+
+  try {
+
+    const cart =
+      JSON.parse(
+        localStorage.getItem(
+          "ASTER4_CART"
+        ) || "[]"
+      );
+
+
+    const count =
+      cart.reduce(
+        function(total, item) {
+
+          return (
+            total +
+            Number(
+              item.quantity || 0
+            )
+          );
+
+        },
+        0
+      );
+
+
+    const element =
+      document.getElementById(
+        "cart-count"
+      );
+
+
+    if (element) {
+
+      element.textContent =
+        count;
+
+    }
+
+
+  } catch (error) {
+
+    console.error(
+      "購物車數量更新失敗：",
+      error
+    );
+
+  }
+
+}
+```
