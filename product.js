@@ -270,14 +270,15 @@ function displayProducts(
         product.status === "開放"
       ) {
 
-        buttonHTML = `
-          <a
-            href="order.html?product=${encodeURIComponent(product.productId)}"
-            class="buy-button"
-          >
-            我要購買
-          </a>
-        `;
+buttonHTML = `
+  <button
+    type="button"
+    class="buy-button"
+    onclick="addToCart('${product.productId}')"
+  >
+    加入購物車
+  </button>
+`;
 
       } else {
 
@@ -360,3 +361,11 @@ document.addEventListener(
 
   }
 );
+function addToCart(productId) {
+
+  alert(
+    "已將商品加入購物車！\n商品編號：" +
+    productId
+  );
+
+}
