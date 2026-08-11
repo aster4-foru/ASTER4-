@@ -22,6 +22,7 @@
 
 <body>
 
+
   <!-- =========================
        HEADER
   ========================== -->
@@ -62,15 +63,17 @@
 
 
   <!-- =========================
-       CHECKOUT
+       CHECKOUT PAGE
   ========================== -->
 
   <main class="checkout-page">
 
 
-    <section class="checkout-header">
+    <!-- 頁面標題 -->
 
-      <div class="checkout-eyebrow">
+    <section class="checkout-hero">
+
+      <div class="checkout-hero-label">
         CHECKOUT
       </div>
 
@@ -79,7 +82,7 @@
       </h1>
 
       <p>
-        請確認商品內容，並填寫訂購資訊
+        請確認商品內容，再填寫訂購資訊
       </p>
 
     </section>
@@ -87,47 +90,95 @@
 
 
     <!-- =========================
-         商品確認
+         上半部
     ========================== -->
 
-    <section class="checkout-section">
+    <section class="checkout-overview">
 
-      <div class="checkout-section-title">
 
-        <div>
+      <!-- =========================
+           左：商品
+      ========================== -->
 
-          <span>
-            ORDER
-          </span>
+      <div class="checkout-products">
 
-          <h2>
-            訂單商品
-          </h2>
+        <div class="checkout-heading">
+
+          <div>
+
+            <span>
+              YOUR ORDER
+            </span>
+
+            <h2>
+              訂單商品
+            </h2>
+
+          </div>
 
         </div>
 
-      </div>
 
-
-      <div
-        id="checkout-items"
-        class="checkout-items"
-      ></div>
-
-
-      <!-- ⭐ 總額 -->
-
-      <div class="checkout-total">
-
-        <span>
-          訂單總額
-        </span>
-
-        <strong id="checkout-total">
-          NT$ 0
-        </strong>
+        <div
+          id="checkout-items"
+          class="checkout-items"
+        ></div>
 
       </div>
+
+
+
+      <!-- =========================
+           右：摘要
+      ========================== -->
+
+      <aside class="checkout-summary">
+
+        <div class="checkout-summary-label">
+          ORDER SUMMARY
+        </div>
+
+
+        <h2>
+          訂單摘要
+        </h2>
+
+
+        <div class="summary-line">
+
+          <span>
+            商品
+          </span>
+
+          <span id="checkout-item-count">
+            —
+          </span>
+
+        </div>
+
+
+        <div class="summary-divider"></div>
+
+
+        <div class="summary-total">
+
+          <span>
+            訂單總額
+          </span>
+
+          <strong id="checkout-total">
+            NT$ 0
+          </strong>
+
+        </div>
+
+
+        <p class="summary-note">
+          實際取貨相關費用將依訂購方式計算。
+        </p>
+
+      </aside>
+
 
     </section>
 
@@ -137,9 +188,10 @@
          訂購人資料
     ========================== -->
 
-    <section class="checkout-section">
+    <section class="checkout-information">
 
-      <div class="checkout-section-title">
+
+      <div class="checkout-heading">
 
         <div>
 
@@ -156,95 +208,102 @@
       </div>
 
 
+
       <form
         id="checkout-form"
         class="checkout-form"
       >
 
 
-        <div class="form-group">
-
-          <label for="customer-name">
-            本名姓名
-          </label>
-
-          <input
-            type="text"
-            id="customer-name"
-            name="customerName"
-            placeholder="請輸入姓名"
-            required
-          >
-
-        </div>
+        <div class="form-grid">
 
 
+          <div class="form-group">
 
-        <div class="form-group">
+            <label for="customer-name">
+              本名姓名
+            </label>
 
-          <label for="social-account">
-            社群帳號
-          </label>
+            <input
+              type="text"
+              id="customer-name"
+              name="customerName"
+              placeholder="請輸入姓名"
+              required
+            >
 
-          <input
-            type="text"
-            id="social-account"
-            name="socialAccount"
-            placeholder="例如：Instagram / Threads"
-            required
-          >
-
-        </div>
+          </div>
 
 
 
-        <div class="form-group">
+          <div class="form-group">
 
-          <label for="phone">
-            手機號碼
-          </label>
+            <label for="social-account">
+              社群帳號
+            </label>
 
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            placeholder="請輸入手機號碼"
-            required
-          >
+            <input
+              type="text"
+              id="social-account"
+              name="socialAccount"
+              placeholder="例如：Instagram / Threads"
+              required
+            >
 
-        </div>
+          </div>
 
 
 
-        <div class="form-group">
+          <div class="form-group">
 
-          <label for="delivery">
-            取貨方式
-          </label>
+            <label for="phone">
+              手機號碼
+            </label>
 
-          <select
-            id="delivery"
-            name="delivery"
-            required
-          >
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="請輸入手機號碼"
+              required
+            >
 
-            <option value="">
-              請選擇取貨方式
-            </option>
+          </div>
 
-            <option value="賣貨便">
-              賣貨便
-            </option>
 
-            <option value="7-11店到店">
-              7-11 店到店
-            </option>
 
-            <option value="其他">
-              其他
-            </option>
+          <div class="form-group">
 
-          </select>
+            <label for="delivery">
+              取貨方式
+            </label>
+
+            <select
+              id="delivery"
+              name="delivery"
+              required
+            >
+
+              <option value="">
+                請選擇取貨方式
+              </option>
+
+              <option value="賣貨便">
+                賣貨便
+              </option>
+
+              <option value="7-11店到店">
+                7-11 店到店
+              </option>
+
+              <option value="其他">
+                其他
+              </option>
+
+            </select>
+
+          </div>
+
 
         </div>
 
@@ -267,12 +326,16 @@
 
 
 
-        <button
-          type="submit"
-          class="checkout-submit"
-        >
-          確認送出訂單
-        </button>
+        <div class="checkout-submit-area">
+
+          <button
+            type="submit"
+            class="checkout-submit"
+          >
+            確認送出訂單
+          </button>
+
+        </div>
 
 
       </form>
@@ -284,7 +347,7 @@
 
 
 
- <script src="./checkout.js?v=2"></script>
+  <script src="./checkout.js?v=2"></script>
 
 </body>
 
