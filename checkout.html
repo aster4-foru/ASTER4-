@@ -1,0 +1,268 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>ASTER4｜確認訂單</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       Header
+  ========================== -->
+
+  <header class="site-header">
+
+    <div class="header-inner">
+
+      <a
+        href="index.html"
+        class="logo"
+      >
+        ASTER4
+      </a>
+
+
+      <nav class="header-nav">
+
+        <a href="index.html">
+          首頁
+        </a>
+
+        <a href="cart.html">
+          購物車
+          <span id="cart-count">0</span>
+        </a>
+
+        <a href="order-search.html">
+          訂單查詢
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- =========================
+       Checkout
+  ========================== -->
+
+  <main class="checkout-page">
+
+    <div class="checkout-header">
+
+      <div class="checkout-eyebrow">
+        CHECKOUT
+      </div>
+
+      <h1>
+        確認訂單
+      </h1>
+
+      <p>
+        請確認你想購買的商品
+      </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         商品
+    ========================== -->
+
+    <section class="checkout-section">
+
+      <div class="checkout-section-title">
+
+        <h2>
+          訂單商品
+        </h2>
+
+      </div>
+
+
+      <div id="checkout-items"></div>
+
+
+      <div class="checkout-total">
+
+        <span>
+          商品總額
+        </span>
+
+        <strong id="checkout-total">
+          NT$ 0
+        </strong>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         訂購人資料
+    ========================== -->
+
+    <section class="checkout-section">
+
+      <div class="checkout-section-title">
+
+        <h2>
+          訂購人資料
+        </h2>
+
+      </div>
+
+
+      <form id="checkout-form">
+
+
+        <div class="form-group">
+
+          <label for="customer-name">
+            本名姓名
+          </label>
+
+          <input
+            type="text"
+            id="customer-name"
+            name="customerName"
+            placeholder="請輸入姓名"
+            required
+          >
+
+        </div>
+
+
+
+        <div class="form-group">
+
+          <label for="social-account">
+            社群帳號
+          </label>
+
+          <input
+            type="text"
+            id="social-account"
+            name="socialAccount"
+            placeholder="例如：IG / Threads 帳號"
+            required
+          >
+
+        </div>
+
+
+
+        <div class="form-group">
+
+          <label for="phone">
+            手機號碼
+          </label>
+
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="請輸入手機號碼"
+            required
+          >
+
+        </div>
+
+
+
+        <div class="form-group">
+
+          <label for="delivery">
+            取貨方式
+          </label>
+
+          <select
+            id="delivery"
+            name="delivery"
+            required
+          >
+
+            <option value="">
+              請選擇取貨方式
+            </option>
+
+            <option value="賣貨便">
+              賣貨便
+            </option>
+
+            <option value="7-11店到店">
+              7-11 店到店
+            </option>
+
+            <option value="其他">
+              其他
+            </option>
+
+          </select>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+          <label for="note">
+            備註
+          </label>
+
+          <textarea
+            id="note"
+            name="note"
+            rows="4"
+            placeholder="有其他想告訴我們的事情可以寫在這裡"
+          ></textarea>
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="checkout-submit"
+        >
+          確認送出訂單
+        </button>
+
+
+      </form>
+
+    </section>
+
+  </main>
+
+
+
+  <script src="checkout.js"></script>
+
+
+</body>
+
+</html>
+```
