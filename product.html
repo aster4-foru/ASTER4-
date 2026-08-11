@@ -3,80 +3,78 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>商品｜ASTER4</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <link rel="stylesheet" href="style.css">
+  <title>ASTER4｜商品</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
 </head>
+
 
 <body>
 
-  <header>
+  <!-- =========================
+       Header
+  ========================== -->
 
-    <a href="index.html" class="logo">
-      ASTER4
-    </a>
+  <header class="site-header">
 
-    <a href="order-search.html" class="order-link">
-      訂單查詢
-    </a>
+    <div class="header-inner">
+
+      <a
+        href="index.html"
+        class="logo"
+      >
+        ASTER4
+      </a>
+
+      <a
+        href="order.html"
+        class="order-link"
+      >
+        訂單查詢
+      </a>
+
+    </div>
 
   </header>
 
 
-  <main>
+  <!-- =========================
+       Product Page
+  ========================== -->
 
-    <section class="product-detail">
+  <main class="product-page">
 
-      <div class="product-detail-image">
-
-        <img
-          src="https://placehold.co/800x800"
-          alt="商品圖片"
-        >
-
-      </div>
-
-
-      <div class="product-detail-info">
-
-        <div class="product-group">
-          G001｜DONGHAE
-        </div>
-
-        <h1>
-          Official Character MD
-        </h1>
-
-        <p class="product-description">
-          商品詳細資訊將會顯示在這裡。
-        </p>
+    <div
+      id="group-info"
+      class="group-info"
+    >
+      載入中...
+    </div>
 
 
-        <div class="product-price">
-          NT$ 850
-        </div>
-
-
-<a
-  href="order.html?product=G001"
-  class="buy-button"
->
-  我要購買
-</a>
-
-      </div>
-
-    </section>
+    <div
+      id="product-list"
+      class="product-list"
+    >
+    </div>
 
   </main>
 
 
-  <footer>
-    © 2026 ASTER4
-  </footer>
+  <!-- =========================
+       JavaScript
+  ========================== -->
 
+  <script src="product.js"></script>
 
 </body>
 
