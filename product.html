@@ -10,22 +10,863 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>ASTER4｜商品</title>
+  <title>ASTER4｜GROUP ORDER</title>
 
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
+
+  <style>
+
+    /* =====================================================
+       ASTER4 PRODUCT PAGE
+       米白 × 淡綠 × 幸運草
+    ===================================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+      margin: 0;
+
+      background: #f5f1e8;
+
+      color: #292925;
+
+      font-family:
+        "Noto Sans TC",
+        "Noto Sans",
+        -apple-system,
+        BlinkMacSystemFont,
+        "PingFang TC",
+        "Microsoft JhengHei",
+        sans-serif;
+
+      -webkit-font-smoothing: antialiased;
+    }
+
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    button {
+      font: inherit;
+    }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    .site-header {
+      width: 100%;
+
+      border-bottom: 1px solid #ddd8cc;
+
+      background: rgba(
+        245,
+        241,
+        232,
+        0.96
+      );
+    }
+
+
+    .header-inner {
+      width: min(
+        1120px,
+        calc(100% - 48px)
+      );
+
+      height: 72px;
+
+      margin: 0 auto;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+    }
+
+
+    .logo {
+      color: #465344;
+
+      font-size: 20px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.12em;
+    }
+
+
+    .header-nav {
+      display: flex;
+
+      align-items: center;
+
+      gap: 28px;
+    }
+
+
+    .header-nav a {
+      color: #74776f;
+
+      font-size: 12px;
+
+      transition:
+        color 0.2s ease;
+    }
+
+
+    .header-nav a:hover {
+      color: #4e5f4b;
+    }
+
+
+    .cart-count {
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      min-width: 18px;
+
+      height: 18px;
+
+      margin-left: 3px;
+
+      border-radius: 50%;
+
+      background: #7f927d;
+
+      color: #fff;
+
+      font-size: 9px;
+    }
+
+
+    /* =====================================================
+       GROUP HERO
+    ===================================================== */
+
+    .group-hero {
+      position: relative;
+
+      width: min(
+        1120px,
+        calc(100% - 48px)
+      );
+
+      margin: 0 auto;
+
+      padding: 72px 0 65px;
+
+      border-bottom: 1px solid #ddd8cc;
+    }
+
+
+    .group-hero-label {
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      margin-bottom: 18px;
+
+      color: #82927f;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.24em;
+    }
+
+
+    .group-hero-label::before {
+      content: "";
+
+      width: 22px;
+
+      height: 1px;
+
+      background: #9caf98;
+    }
+
+
+    .group-info {
+      position: relative;
+    }
+
+
+    .group-info .group-id {
+      /*
+        G001 / G002 不顯示給客人
+      */
+      display: none;
+    }
+
+
+    .group-info h1 {
+      margin: 0;
+
+      max-width: 760px;
+
+      color: #3f4b3d;
+
+      font-size: clamp(
+        38px,
+        5vw,
+        54px
+      );
+
+      line-height: 1.15;
+
+      font-weight: 650;
+
+      letter-spacing: -0.045em;
+    }
+
+
+    .group-info p {
+      margin: 14px 0 0;
+
+      color: #85867f;
+
+      font-size: 13px;
+
+      line-height: 1.8;
+
+      letter-spacing: 0.05em;
+    }
+
+
+    .hero-clover {
+      position: absolute;
+
+      right: 10px;
+
+      bottom: 40px;
+
+      color: #82977d;
+
+      font-size: 30px;
+
+      opacity: 0.55;
+
+      transform: rotate(-8deg);
+    }
+
+
+    /* =====================================================
+       PRODUCT SECTION
+    ===================================================== */
+
+    .products-section {
+      padding: 62px 0 90px;
+    }
+
+
+    .products-inner {
+      width: min(
+        1120px,
+        calc(100% - 48px)
+      );
+
+      margin: 0 auto;
+    }
+
+
+    .products-heading {
+      display: flex;
+
+      align-items: flex-end;
+
+      justify-content: space-between;
+
+      margin-bottom: 28px;
+    }
+
+
+    .products-heading-label {
+      display: block;
+
+      margin-bottom: 7px;
+
+      color: #879582;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.25em;
+    }
+
+
+    .products-heading h2 {
+      margin: 0;
+
+      color: #394137;
+
+      font-size: 25px;
+
+      font-weight: 650;
+
+      letter-spacing: -0.03em;
+    }
+
+
+    .products-heading-note {
+      color: #99978f;
+
+      font-size: 11px;
+    }
+
+
+    /* =====================================================
+       PRODUCT LIST
+    ===================================================== */
+
+    .product-list {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 22px;
+    }
+
+
+    /* =====================================================
+       PRODUCT CARD
+    ===================================================== */
+
+    .product-item {
+      display: grid;
+
+      grid-template-columns:
+        minmax(190px, 42%)
+        1fr;
+
+      min-height: 310px;
+
+      overflow: hidden;
+
+      background: #fbfaf6;
+
+      border: 1px solid #e0dbd0;
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+
+    .product-item:hover {
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 18px 35px
+        rgba(
+          75,
+          79,
+          67,
+          0.09
+        );
+    }
+
+
+    /* =====================================================
+       PRODUCT IMAGE
+    ===================================================== */
+
+    .product-item-image {
+      position: relative;
+
+      min-height: 310px;
+
+      overflow: hidden;
+
+      background: #e7e3da;
+    }
+
+
+    .product-item-image img {
+      display: block;
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        transform 0.4s ease;
+    }
+
+
+    .product-item:hover
+    .product-item-image img {
+      transform: scale(1.035);
+    }
+
+
+    .no-image {
+      width: 100%;
+
+      height: 100%;
+
+      min-height: 310px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: #9a9a91;
+
+      font-size: 10px;
+
+      letter-spacing: 0.2em;
+    }
+
+
+    /* =====================================================
+       PRODUCT INFO
+    ===================================================== */
+
+    .product-item-info {
+      padding: 27px 25px 25px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      min-width: 0;
+    }
+
+
+    .product-channel {
+      margin-bottom: 10px;
+
+      color: #82927f;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.15em;
+
+      text-transform: uppercase;
+    }
+
+
+    .product-item-name {
+      margin: 0;
+
+      color: #3d423b;
+
+      font-size: 19px;
+
+      line-height: 1.5;
+
+      font-weight: 650;
+
+      letter-spacing: -0.02em;
+    }
+
+
+    .product-version {
+      margin-top: 10px;
+
+      color: #85867f;
+
+      font-size: 12px;
+
+      line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       STATUS
+    ===================================================== */
+
+    .product-status {
+      width: fit-content;
+
+      margin-top: 16px;
+
+      padding: 5px 9px;
+
+      border-radius: 2px;
+
+      font-size: 9px;
+
+      letter-spacing: 0.08em;
+    }
+
+
+    .product-status.is-open {
+      background: #e0e9dd;
+
+      color: #60735d;
+    }
+
+
+    .product-status.is-closed {
+      background: #e7e4dd;
+
+      color: #8b8981;
+    }
+
+
+    /* =====================================================
+       ACTION
+    ===================================================== */
+
+    .product-action {
+      margin-top: auto;
+
+      padding-top: 25px;
+    }
+
+
+    .buy-button {
+      width: 100%;
+
+      min-height: 44px;
+
+      border: 1px solid #71836e;
+
+      border-radius: 2px;
+
+      background: #71836e;
+
+      color: #fff;
+
+      cursor: pointer;
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: 0.08em;
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+
+    .buy-button:hover {
+      background: #60725d;
+
+      transform: translateY(-1px);
+    }
+
+
+    .disabled-button {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 100%;
+
+      min-height: 44px;
+
+      border: 1px solid #d2cec5;
+
+      border-radius: 2px;
+
+      background: #e8e5dd;
+
+      color: #8d8b83;
+
+      font-size: 11px;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    .site-footer {
+      padding: 42px 0;
+
+      background: #4d594b;
+
+      color: #eef1eb;
+    }
+
+
+    .footer-inner {
+      width: min(
+        1120px,
+        calc(100% - 48px)
+      );
+
+      margin: 0 auto;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+    }
+
+
+    .footer-logo {
+      font-size: 17px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.13em;
+    }
+
+
+    .footer-clover {
+      margin-left: 7px;
+
+      opacity: 0.7;
+    }
+
+
+    .footer-text {
+      color: #c9d0c6;
+
+      font-size: 10px;
+
+      line-height: 1.7;
+
+      text-align: right;
+    }
+
+
+    /* =====================================================
+       LOADING
+    ===================================================== */
+
+    .loading-state {
+      padding: 80px 20px;
+
+      color: #8f8f87;
+
+      text-align: center;
+
+      font-size: 12px;
+
+      letter-spacing: 0.05em;
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 800px) {
+
+
+      .header-inner {
+        width: calc(100% - 30px);
+
+        height: 65px;
+      }
+
+
+      .logo {
+        font-size: 18px;
+      }
+
+
+      .header-nav {
+        gap: 14px;
+      }
+
+
+      .header-nav a {
+        font-size: 10px;
+      }
+
+
+      .group-hero {
+        width: calc(100% - 30px);
+
+        padding: 55px 0 48px;
+      }
+
+
+      .group-info h1 {
+        font-size: 39px;
+      }
+
+
+      .hero-clover {
+        right: 2px;
+
+        bottom: 26px;
+
+        font-size: 25px;
+      }
+
+
+      .products-section {
+        padding: 55px 0 70px;
+      }
+
+
+      .products-inner {
+        width: calc(100% - 30px);
+      }
+
+
+      .products-heading {
+        display: block;
+
+        margin-bottom: 23px;
+      }
+
+
+      .products-heading h2 {
+        font-size: 23px;
+      }
+
+
+      .products-heading-note {
+        display: block;
+
+        margin-top: 8px;
+      }
+
+
+      .product-list {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+      }
+
+
+      .product-item {
+        grid-template-columns: 42% 58%;
+
+        min-height: 245px;
+      }
+
+
+      .product-item-image {
+        min-height: 245px;
+      }
+
+
+      .no-image {
+        min-height: 245px;
+      }
+
+
+      .product-item-info {
+        padding: 21px 18px 19px;
+      }
+
+
+      .product-item-name {
+        font-size: 17px;
+      }
+
+
+      .product-version {
+        font-size: 11px;
+      }
+
+
+      .product-action {
+        padding-top: 18px;
+      }
+
+
+      .buy-button,
+      .disabled-button {
+        min-height: 40px;
+
+        font-size: 10px;
+      }
+
+
+      .footer-inner {
+        width: calc(100% - 30px);
+
+        display: block;
+      }
+
+
+      .footer-text {
+        margin-top: 13px;
+
+        text-align: left;
+      }
+
+    }
+
+
+    /* =====================================================
+       SMALL MOBILE
+    ===================================================== */
+
+    @media (max-width: 430px) {
+
+
+      .product-item {
+        grid-template-columns: 1fr;
+      }
+
+
+      .product-item-image {
+        min-height: 300px;
+
+        aspect-ratio: 1 / 1;
+      }
+
+
+      .no-image {
+        min-height: 300px;
+      }
+
+
+      .product-item-info {
+        min-height: 225px;
+      }
+
+    }
+
+  </style>
 
 </head>
+
 
 
 <body>
 
 
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
+
   <header class="site-header">
 
     <div class="header-inner">
+
 
       <a
         href="index.html"
@@ -35,12 +876,33 @@
       </a>
 
 
-      <a
-        href="order-search.html"
-        class="order-link"
-      >
-        訂單查詢
-      </a>
+
+      <nav class="header-nav">
+
+
+        <a href="index.html">
+          首頁
+        </a>
+
+
+        <a href="cart.html">
+          購物車
+          <span
+            id="cart-count"
+            class="cart-count"
+          >
+            0
+          </span>
+        </a>
+
+
+        <a href="order-search.html">
+          訂單查詢
+        </a>
+
+
+      </nav>
+
 
     </div>
 
@@ -48,33 +910,208 @@
 
 
 
-  <main class="product-page">
+  <!-- =====================================================
+       GROUP HERO
+  ====================================================== -->
+
+  <section class="group-hero">
 
 
-    <section
+    <div class="group-hero-label">
+      ASTER4 GROUP ORDER
+    </div>
+
+
+    <div
       id="group-info"
       class="group-info"
     >
 
-      載入中...
+      <div class="loading-state">
+        載入中...
+      </div>
 
-    </section>
-
-
-
-    <section
-      id="product-list"
-      class="product-list"
-    >
-
-    </section>
+    </div>
 
 
-  </main>
+    <div class="hero-clover">
+      🍀
+    </div>
 
 
+  </section>
+
+
+
+  <!-- =====================================================
+       PRODUCTS
+  ====================================================== -->
+
+  <section class="products-section">
+
+
+    <div class="products-inner">
+
+
+      <div class="products-heading">
+
+
+        <div>
+
+          <span class="products-heading-label">
+            AVAILABLE ITEMS
+          </span>
+
+
+          <h2>
+            商品選擇
+          </h2>
+
+        </div>
+
+
+        <div class="products-heading-note">
+          Choose your version
+        </div>
+
+
+      </div>
+
+
+
+      <div
+        id="product-list"
+        class="product-list"
+      >
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer class="site-footer">
+
+
+    <div class="footer-inner">
+
+
+      <div class="footer-logo">
+
+        ASTER4
+
+        <span class="footer-clover">
+          🍀
+        </span>
+
+      </div>
+
+
+      <div class="footer-text">
+
+        K-POP GROUP ORDER<br>
+
+        © ASTER4
+
+      </div>
+
+
+    </div>
+
+
+  </footer>
+
+
+
+  <!-- =====================================================
+       PRODUCT JS
+  ====================================================== -->
 
   <script src="product.js"></script>
+
+
+
+  <!-- =====================================================
+       CART COUNT
+  ====================================================== -->
+
+  <script>
+
+    function updateCartCount() {
+
+
+      try {
+
+
+        const cart =
+          JSON.parse(
+            localStorage.getItem(
+              "ASTER4_CART"
+            ) || "[]"
+          );
+
+
+        const count =
+          cart.reduce(
+            function(total, item) {
+
+              return (
+                total +
+                Number(
+                  item.quantity || 0
+                )
+              );
+
+            },
+            0
+          );
+
+
+        const element =
+          document.getElementById(
+            "cart-count"
+          );
+
+
+        if (element) {
+
+          element.textContent =
+            count;
+
+        }
+
+
+      } catch (error) {
+
+        console.error(
+          "購物車數量讀取失敗：",
+          error
+        );
+
+      }
+
+    }
+
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function() {
+
+        updateCartCount();
+
+      }
+    );
+
+
+  </script>
 
 
 </body>
