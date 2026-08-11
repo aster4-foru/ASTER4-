@@ -5,115 +5,88 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>ASTER4</title>
+  <title>ASTER4｜K-POP GOODS & ALBUMS</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
 
-  <header>
-    <div class="logo">ASTER4</div>
+  <!-- =========================
+       Header
+  ========================== -->
 
-    <a href="#" class="order-link">
-      訂單查詢
-    </a>
+  <header class="site-header">
+
+    <div class="header-inner">
+
+      <a href="index.html" class="logo">
+        ASTER4
+      </a>
+
+      <a href="#" class="order-link">
+        訂單查詢
+      </a>
+
+    </div>
+
   </header>
 
 
-  <main>
+  <!-- =========================
+       Hero
+  ========================== -->
 
-    <section class="hero">
-      <h1>ASTER4</h1>
-      <p>K-POP GOODS & ALBUMS</p>
-    </section>
+  <section class="hero">
+
+    <h1>ASTER4</h1>
+
+    <p>
+      K-POP GOODS &amp; ALBUMS
+    </p>
+
+  </section>
 
 
-    <section class="section">
+  <!-- =========================
+       Open Groups
+  ========================== -->
 
-      <div class="section-title">
-        <h2>開團中</h2>
-        <p>Currently Open</p>
-      </div>
+  <section class="section">
 
+    <div class="section-title">
 
-      <div class="product-grid">
+      <h2>開團中</h2>
 
-<a href="./product.html" class="product-card">
+      <p>
+        Currently Open
+      </p>
 
-  <img
-    class="product-image"
-    src="https://placehold.co/600x600"
-    alt="商品圖片"
-  >
-
-  <div class="product-info">
-
-    <div class="product-group">
-      G001｜DONGHAE
     </div>
 
-    <div class="product-name">
-      Official Character MD
+
+    <!--
+      商品卡片會由 script.js
+      從 GAS API 自動產生
+    -->
+
+    <div
+      class="product-grid"
+      id="products"
+    >
     </div>
 
-  </div>
 
-</a>
-
-
-        <div class="product-card">
-
-          <img
-            class="product-image"
-            src="https://placehold.co/600x600"
-            alt="商品圖片"
-          >
-
-          <div class="product-info">
-            <div class="product-group">
-              G002｜SUPER JUNIOR
-            </div>
-
-            <div class="product-name">
-              83z Album
-            </div>
-          </div>
-
-        </div>
+  </section>
 
 
-        <div class="product-card">
+  <!-- =========================
+       JavaScript
+  ========================== -->
 
-          <img
-            class="product-image"
-            src="https://placehold.co/600x600"
-            alt="商品圖片"
-          >
+  <script src="script.js"></script>
 
-          <div class="product-info">
-            <div class="product-group">
-              G003｜D&E
-            </div>
-
-            <div class="product-name">
-              Official MD
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <footer>
-    © 2026 ASTER4
-  </footer>
-<script src="script.js"></script>
 </body>
 
 </html>
