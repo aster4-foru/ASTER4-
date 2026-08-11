@@ -1,4 +1,3 @@
-
 const CART_KEY = "ASTER4_CART";
 
 
@@ -6,47 +5,28 @@ const CART_KEY = "ASTER4_CART";
 // 讀取購物車
 // =========================
 
-```javascript
 function getCart() {
 
   const rawCart =
-    localStorage.getItem("ASTER4_CART");
+    localStorage.getItem(CART_KEY);
 
   console.log(
-    "ASTER4_CART 原始資料：",
+    "ASTER4_CART：",
     rawCart
   );
 
-
   if (!rawCart) {
-
-    console.log(
-      "找不到 ASTER4_CART"
-    );
-
     return [];
-
   }
-
 
   try {
 
-    const cart =
-      JSON.parse(rawCart);
-
-
-    console.log(
-      "ASTER4_CART 解析後：",
-      cart
-    );
-
-
-    return cart;
+    return JSON.parse(rawCart);
 
   } catch (error) {
 
     console.error(
-      "ASTER4_CART JSON 解析失敗：",
+      "購物車資料解析失敗：",
       error
     );
 
@@ -55,7 +35,7 @@ function getCart() {
   }
 
 }
-```
+
 
 // =========================
 // 金額格式
@@ -63,16 +43,14 @@ function getCart() {
 
 function formatPrice(price) {
 
-  return (
-    "NT$ " +
-    Number(price || 0).toLocaleString()
-  );
+  return "NT$ " +
+    Number(price || 0).toLocaleString();
 
 }
 
 
 // =========================
-// 顯示結帳商品
+// 顯示商品
 // =========================
 
 function displayCheckoutItems() {
@@ -93,6 +71,12 @@ function displayCheckoutItems() {
     );
 
 
+  console.log(
+    "結帳頁購物車：",
+    cart
+  );
+
+
   if (!container) {
 
     console.error(
@@ -110,15 +94,17 @@ function displayCheckoutItems() {
       "找不到 checkout-total"
     );
 
+    return;
+
   }
 
 
   // =========================
-  // 購物車沒有商品
+  // 空購物車
   // =========================
 
   if (
-    !cart ||
+    !Array.isArray(cart) ||
     cart.length === 0
   ) {
 
@@ -141,23 +127,13 @@ function displayCheckoutItems() {
 
     `;
 
-
-    if (totalElement) {
-
-      totalElement.textContent =
-        "NT$ 0";
-
-    }
-
+    totalElement.textContent =
+      "NT$ 0";
 
     return;
 
   }
 
-
-  // =========================
-  // 清空原本內容
-  // =========================
 
   container.innerHTML = "";
 
@@ -166,181 +142,160 @@ function displayCheckoutItems() {
 
 
   // =========================
-  // 建立商品
+  // 商品
   // =========================
 
-  cart.forEach(
-    function(item) {
+  cart.forEach(function(item) {
 
-      const price =
-        Number(item.price) || 0;
-
-
-      const quantity =
-        Number(item.quantity) || 0;
+    const price =
+      Number(item.price) || 0;
 
 
-      const subtotal =
-        price * quantity;
+    const quantity =
+      Number(item.quantity) || 0;
 
 
-      total += subtotal;
+    const subtotal =
+      price * quantity;
 
 
-      const itemElement =
-        document.createElement(
-          "div"
-        );
+    total += subtotal;
 
 
-      itemElement.className =
-        "checkout-item";
+    const itemElement =
+      document.createElement("div");
 
 
-      // =========================
-      // 商品圖片
-      // =========================
-
-      let imageHTML = "";
+    itemElement.className =
+      "checkout-item";
 
 
-      if (item.image) {
+    // =========================
+    // 圖片
+    // =========================
 
-        let imageUrl =
-          String(
-            item.image
-          ).trim();
+    let imageHTML = `
 
+      <div class="checkout-no-image">
+        ASTER4
+      </div>
 
-        if (
-          imageUrl.indexOf(
-            "drive.google.com"
-          ) !== -1
-        ) {
-
-          const match =
-            imageUrl.match(
-              /\/d\/([^\/]+)/
-            );
+    `;
 
 
-          if (match) {
+    if (item.image) {
 
-            imageUrl =
-              "https://drive.google.com/thumbnail?id=" +
-              match[1] +
-              "&sz=w500";
+      let imageUrl =
+        String(item.image).trim();
 
-          }
+
+      if (
+        imageUrl.includes(
+          "drive.google.com"
+        )
+      ) {
+
+        const match =
+          imageUrl.match(
+            /\/d\/([^\/]+)/
+          );
+
+
+        if (match) {
+
+          imageUrl =
+            "https://drive.google.com/thumbnail?id=" +
+            match[1] +
+            "&sz=w500";
 
         }
-
-
-        imageHTML = `
-
-          <img
-            src="${imageUrl}"
-            alt="${item.name || ""}"
-          >
-
-        `;
-
-      } else {
-
-        imageHTML = `
-
-          <div class="checkout-no-image">
-            ASTER4
-          </div>
-
-        `;
 
       }
 
 
-      // =========================
-      // 商品內容
-      // =========================
+      imageHTML = `
 
-      itemElement.innerHTML = `
-
-        <div class="checkout-item-image">
-
-          ${imageHTML}
-
-        </div>
-
-
-        <div class="checkout-item-info">
-
-          <div class="checkout-item-group">
-            ${item.groupId || ""}
-          </div>
-
-
-          <div class="checkout-item-channel">
-            ${item.channel || ""}
-          </div>
-
-
-          <h3>
-            ${item.name || ""}
-          </h3>
-
-
-          <div class="checkout-item-version">
-            ${item.version || ""}
-          </div>
-
-
-          <div class="checkout-item-bottom">
-
-            <span>
-              ${formatPrice(price)}
-              × ${quantity}
-            </span>
-
-
-            <strong>
-              ${formatPrice(subtotal)}
-            </strong>
-
-          </div>
-
-        </div>
+        <img
+          src="${imageUrl}"
+          alt="${item.name || "商品"}"
+        >
 
       `;
 
-
-      container.appendChild(
-        itemElement
-      );
-
     }
-  );
 
 
-  // =========================
-  // ⭐ 計算完成後直接寫入總額
-  // =========================
+    // =========================
+    // 商品內容
+    // =========================
 
-  if (totalElement) {
+    itemElement.innerHTML = `
 
-    totalElement.innerHTML = `
-      ${formatPrice(total)}
+      <div class="checkout-item-image">
+
+        ${imageHTML}
+
+      </div>
+
+
+      <div class="checkout-item-info">
+
+        <div class="checkout-item-group">
+          ${item.groupId || ""}
+        </div>
+
+
+        <div class="checkout-item-channel">
+          ${item.channel || ""}
+        </div>
+
+
+        <h3>
+          ${item.name || ""}
+        </h3>
+
+
+        <div class="checkout-item-version">
+          ${item.version || ""}
+        </div>
+
+
+        <div class="checkout-item-bottom">
+
+          <span>
+            ${formatPrice(price)}
+            × ${quantity}
+          </span>
+
+
+          <strong>
+            ${formatPrice(subtotal)}
+          </strong>
+
+        </div>
+
+      </div>
+
     `;
 
-  }
+
+    container.appendChild(
+      itemElement
+    );
+
+  });
+
+
+  // =========================
+  // ⭐ 訂單總額
+  // =========================
+
+  totalElement.textContent =
+    formatPrice(total);
 
 
   console.log(
-    "結帳商品：",
-    cart
-  );
-
-
-  console.log(
-    "結帳總額：",
+    "訂單總額：",
     total
   );
 
@@ -359,4 +314,3 @@ document.addEventListener(
 
   }
 );
-alert("CHECKOUT JS 有成功載入！");
