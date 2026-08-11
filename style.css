@@ -797,8 +797,3 @@ a.product-card:active {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-
-}
-body {
-  border: 10px solid red;
-}
