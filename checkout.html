@@ -1,652 +1,349 @@
-```css
-/* =========================================================
-   ASTER4｜CHECKOUT PAGE
-   直接對應目前 checkout.html
-   ========================================================= */
-
-
-/* =========================
-   Checkout Hero
-========================= */
-
-.checkout-hero {
-  width: min(1120px, calc(100% - 48px));
-  margin: 0 auto;
-  padding: 72px 0 42px;
-  border-bottom: 1px solid #e5e5e5;
-  box-sizing: border-box;
-}
-
-.checkout-hero-label {
-  margin-bottom: 16px;
-  color: #999;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.28em;
-}
+```html
+<!DOCTYPE html>
+<html lang="zh-Hant">
 
-.checkout-hero h1 {
-  margin: 0;
-  color: #1f1f1f;
-  font-size: clamp(40px, 6vw, 64px);
-  line-height: 1;
-  font-weight: 750;
-  letter-spacing: -0.055em;
-}
+<head>
 
-.checkout-hero p {
-  margin: 18px 0 0;
-  color: #888;
-  font-size: 14px;
-  line-height: 1.7;
-}
+  <meta charset="UTF-8">
 
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-/* =========================
-   上半部
-========================= */
+  <title>ASTER4｜確認訂單</title>
 
-.checkout-overview {
-  width: min(1120px, calc(100% - 48px));
-  margin: 34px auto 0;
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
 
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 330px;
-  gap: 24px;
+</head>
 
-  align-items: start;
-}
 
+<body>
 
-/* =========================
-   左側商品區
-========================= */
 
-.checkout-products {
-  overflow: hidden;
+  <!-- =========================
+       HEADER
+  ========================== -->
 
-  background: #fff;
-  border: 1px solid #e5e5e5;
-  border-radius: 18px;
+  <header class="site-header">
 
-  box-sizing: border-box;
-}
+    <div class="header-inner">
 
-.checkout-products .checkout-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+      <a
+        href="index.html"
+        class="logo"
+      >
+        ASTER4
+      </a>
 
-  padding: 25px 28px;
 
-  border-bottom: 1px solid #ededed;
-}
+      <nav class="header-nav">
 
-.checkout-heading span {
-  display: block;
+        <a href="index.html">
+          首頁
+        </a>
 
-  margin-bottom: 7px;
+        <a href="cart.html">
+          購物車
+          <span id="cart-count">0</span>
+        </a>
 
-  color: #aaa;
-  font-size: 10px;
-  font-weight: 650;
-  letter-spacing: 0.22em;
-}
+        <a href="order-search.html">
+          訂單查詢
+        </a>
 
-.checkout-heading h2 {
-  margin: 0;
+      </nav>
 
-  color: #222;
-  font-size: 21px;
-  line-height: 1.3;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-}
+    </div>
 
+  </header>
 
-/* =========================
-   商品列表
-========================= */
 
-.checkout-items {
-  padding: 0 28px;
-}
 
-.checkout-item {
-  display: grid;
-  grid-template-columns: 110px minmax(0, 1fr);
+  <!-- =========================
+       MAIN
+  ========================== -->
 
-  gap: 20px;
+  <main class="checkout-page">
 
-  padding: 24px 0;
 
-  border-bottom: 1px solid #ededed;
-}
+    <!-- =========================
+         HERO
+    ========================== -->
 
-.checkout-item:last-child {
-  border-bottom: none;
-}
+    <section class="checkout-hero">
 
+      <div class="checkout-hero-top">
 
-/* =========================
-   商品圖片
-========================= */
+        <span>
+          CHECKOUT
+        </span>
 
-.checkout-item-image {
-  width: 110px;
-  height: 110px;
+        <span>
+          ASTER4
+        </span>
 
-  overflow: hidden;
+      </div>
 
-  background: #f4f4f4;
-  border-radius: 12px;
-}
 
-.checkout-item-image img {
-  display: block;
+      <h1>
+        確認訂單
+      </h1>
 
-  width: 100%;
-  height: 100%;
 
-  object-fit: cover;
-}
+      <p>
+        確認商品內容，再填寫訂購資訊
+      </p>
 
-.checkout-no-image {
-  display: flex;
+    </section>
 
-  width: 100%;
-  height: 100%;
 
-  align-items: center;
-  justify-content: center;
 
-  color: #aaa;
+    <!-- =========================
+         ORDER
+    ========================== -->
 
-  font-size: 10px;
-  letter-spacing: 0.18em;
-}
+    <section class="checkout-order">
 
 
-/* =========================
-   商品資訊
-========================= */
+      <div class="section-heading">
 
-.checkout-item-info {
-  min-width: 0;
+        <span>
+          YOUR ORDER
+        </span>
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+        <h2>
+          訂單商品
+        </h2>
 
-.checkout-item-channel {
-  margin-bottom: 7px;
+      </div>
 
-  color: #999;
 
-  font-size: 11px;
-  letter-spacing: 0.06em;
-}
+      <div
+        id="checkout-items"
+        class="checkout-items"
+      ></div>
 
-.checkout-item-info h3 {
-  margin: 0;
 
-  color: #222;
+    </section>
 
-  font-size: 17px;
-  line-height: 1.5;
-  font-weight: 680;
-}
 
-.checkout-item-version {
-  margin-top: 6px;
 
-  color: #777;
+    <!-- =========================
+         ORDER SUMMARY
+    ========================== -->
 
-  font-size: 13px;
-}
+    <section class="checkout-total-area">
 
-.checkout-item-bottom {
-  display: flex;
 
-  align-items: center;
-  justify-content: space-between;
+      <div class="checkout-total-label">
 
-  gap: 20px;
+        <span>
+          ORDER SUMMARY
+        </span>
 
-  margin-top: 18px;
-}
+        <p>
+          商品
+          <strong id="checkout-item-count">
+            —
+          </strong>
+        </p>
 
-.checkout-item-bottom span {
-  color: #999;
+      </div>
 
-  font-size: 12px;
-}
 
-.checkout-item-bottom strong {
-  color: #222;
+      <div class="checkout-total-price">
 
-  font-size: 16px;
-  font-weight: 700;
-}
+        <span>
+          訂單總額
+        </span>
 
+        <strong id="checkout-total">
+          NT$ 0
+        </strong>
 
-/* =========================
-   右側訂單摘要
-========================= */
+      </div>
 
-.checkout-summary {
-  position: sticky;
-  top: 24px;
 
-  box-sizing: border-box;
+    </section>
 
-  padding: 30px;
 
-  background: #222;
-  border-radius: 18px;
 
-  color: #fff;
-}
+    <!-- =========================
+         INFORMATION
+    ========================== -->
 
-.checkout-summary-label {
-  margin-bottom: 10px;
+    <section class="checkout-information">
 
-  color: #999;
 
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-}
+      <div class="section-heading">
 
-.checkout-summary h2 {
-  margin: 0 0 32px;
+        <span>
+          INFORMATION
+        </span>
 
-  color: #fff;
+        <h2>
+          訂購人資料
+        </h2>
 
-  font-size: 22px;
-  font-weight: 650;
-  letter-spacing: -0.025em;
-}
+      </div>
 
-.summary-line {
-  display: flex;
 
-  align-items: center;
-  justify-content: space-between;
 
-  color: #aaa;
+      <form
+        id="checkout-form"
+        class="checkout-form"
+      >
 
-  font-size: 13px;
-}
 
-.summary-line span:last-child {
-  color: #fff;
-}
+        <div class="form-row">
 
-.summary-divider {
-  width: 100%;
-  height: 1px;
 
-  margin: 22px 0;
+          <div class="form-group">
 
-  background: #444;
-}
+            <label for="customer-name">
+              本名姓名
+            </label>
 
-.summary-total {
-  display: flex;
-  flex-direction: column;
+            <input
+              type="text"
+              id="customer-name"
+              name="customerName"
+              placeholder="請輸入姓名"
+              required
+            >
 
-  gap: 8px;
-}
+          </div>
 
-.summary-total span {
-  color: #aaa;
 
-  font-size: 12px;
-}
+          <div class="form-group">
 
-.summary-total strong {
-  color: #fff;
+            <label for="social-account">
+              社群帳號
+            </label>
 
-  font-size: 30px;
-  line-height: 1.2;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-}
+            <input
+              type="text"
+              id="social-account"
+              name="socialAccount"
+              placeholder="例如：Instagram / Threads"
+              required
+            >
 
-.summary-note {
-  margin: 25px 0 0;
-  padding-top: 19px;
+          </div>
 
-  border-top: 1px solid #444;
 
-  color: #888;
+        </div>
 
-  font-size: 11px;
-  line-height: 1.7;
-}
 
 
-/* =========================
-   訂購人資料
-========================= */
+        <div class="form-row">
 
-.checkout-information {
-  width: min(1120px, calc(100% - 48px));
-  margin: 24px auto 80px;
 
-  overflow: hidden;
+          <div class="form-group">
 
-  background: #fff;
-  border: 1px solid #e5e5e5;
-  border-radius: 18px;
+            <label for="phone">
+              手機號碼
+            </label>
 
-  box-sizing: border-box;
-}
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="請輸入手機號碼"
+              required
+            >
 
-.checkout-information > .checkout-heading {
-  padding: 25px 28px;
+          </div>
 
-  border-bottom: 1px solid #ededed;
-}
 
+          <div class="form-group">
 
-/* =========================
-   表單
-========================= */
+            <label for="delivery">
+              取貨方式
+            </label>
 
-.checkout-form {
-  padding: 30px 28px;
-  box-sizing: border-box;
-}
+            <select
+              id="delivery"
+              name="delivery"
+              required
+            >
 
-.form-grid {
-  display: grid;
+              <option value="">
+                請選擇取貨方式
+              </option>
 
-  grid-template-columns: 1fr 1fr;
+              <option value="賣貨便">
+                賣貨便
+              </option>
 
-  gap: 22px 20px;
-}
+              <option value="7-11店到店">
+                7-11 店到店
+              </option>
 
-.form-group {
-  margin-bottom: 22px;
-}
+              <option value="其他">
+                其他
+              </option>
 
-.form-grid .form-group {
-  margin-bottom: 0;
-}
+            </select>
 
-.form-group label {
-  display: block;
+          </div>
 
-  margin-bottom: 8px;
 
-  color: #333;
+        </div>
 
-  font-size: 12px;
-  font-weight: 650;
-}
 
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
 
-  box-sizing: border-box;
+        <div class="form-group form-note">
 
-  padding: 14px 15px;
+          <label for="note">
+            備註
+          </label>
 
-  border: 1px solid #ddd;
-  border-radius: 9px;
+          <textarea
+            id="note"
+            name="note"
+            rows="4"
+            placeholder="有其他想告訴 ASTER4 的事情，可以寫在這裡"
+          ></textarea>
 
-  outline: none;
+        </div>
 
-  background: #fafafa;
 
-  color: #222;
 
-  font-family: inherit;
-  font-size: 14px;
+        <div class="checkout-submit-row">
 
-  transition:
-    border-color 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
-}
+          <p>
+            送出前請確認商品數量與訂購資訊
+          </p>
 
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: #aaa;
-}
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  background: #fff;
+          <button
+            type="submit"
+            class="checkout-submit"
+          >
+            確認送出訂單
+          </button>
 
-  border-color: #222;
+        </div>
 
-  box-shadow:
-    0 0 0 3px rgba(0, 0, 0, 0.04);
-}
 
-.form-group textarea {
-  min-height: 120px;
+      </form>
 
-  resize: vertical;
-}
+    </section>
 
 
-/* =========================
-   送出按鈕
-========================= */
+  </main>
 
-.checkout-submit-area {
-  display: flex;
 
-  justify-content: flex-end;
 
-  padding-top: 10px;
+  <script src="checkout.js"></script>
 
-  margin-top: 6px;
 
-  border-top: 1px solid #ededed;
-}
+</body>
 
-.checkout-submit {
-  min-width: 220px;
-
-  margin-top: 24px;
-
-  padding: 16px 28px;
-
-  border: none;
-  border-radius: 9px;
-
-  background: #222;
-
-  color: #fff;
-
-  font-family: inherit;
-
-  font-size: 14px;
-  font-weight: 650;
-
-  cursor: pointer;
-
-  transition:
-    opacity 0.2s ease,
-    transform 0.15s ease;
-}
-
-.checkout-submit:hover {
-  opacity: 0.82;
-}
-
-.checkout-submit:active {
-  transform: scale(0.985);
-}
-
-
-/* =========================
-   空購物車
-========================= */
-
-.checkout-empty {
-  padding: 60px 20px;
-
-  text-align: center;
-}
-
-.checkout-empty p {
-  margin: 0;
-
-  color: #999;
-
-  font-size: 14px;
-}
-
-.back-to-shop {
-  display: inline-block;
-
-  margin-top: 18px;
-
-  color: #222;
-
-  font-size: 13px;
-
-  text-decoration: underline;
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 900px) {
-
-  .checkout-overview {
-    grid-template-columns: 1fr;
-  }
-
-  .checkout-summary {
-    position: static;
-  }
-
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-  .checkout-hero {
-    width: calc(100% - 28px);
-
-    padding: 42px 0 32px;
-  }
-
-  .checkout-hero h1 {
-    font-size: 38px;
-  }
-
-  .checkout-hero p {
-    font-size: 13px;
-  }
-
-  .checkout-overview {
-    width: calc(100% - 28px);
-
-    margin-top: 20px;
-
-    gap: 16px;
-  }
-
-  .checkout-products,
-  .checkout-summary,
-  .checkout-information {
-    border-radius: 14px;
-  }
-
-  .checkout-products .checkout-heading,
-  .checkout-information > .checkout-heading {
-    padding: 21px 18px;
-  }
-
-  .checkout-items {
-    padding: 0 18px;
-  }
-
-  .checkout-item {
-    grid-template-columns: 82px minmax(0, 1fr);
-
-    gap: 14px;
-
-    padding: 20px 0;
-  }
-
-  .checkout-item-image {
-    width: 82px;
-    height: 82px;
-
-    border-radius: 9px;
-  }
-
-  .checkout-item-info h3 {
-    font-size: 14px;
-  }
-
-  .checkout-item-bottom {
-    margin-top: 12px;
-  }
-
-  .checkout-item-bottom span {
-    font-size: 11px;
-  }
-
-  .checkout-item-bottom strong {
-    font-size: 14px;
-  }
-
-  .checkout-summary {
-    padding: 24px 20px;
-  }
-
-  .summary-total strong {
-    font-size: 27px;
-  }
-
-  .checkout-information {
-    width: calc(100% - 28px);
-
-    margin-top: 16px;
-    margin-bottom: 50px;
-  }
-
-  .checkout-form {
-    padding: 22px 18px;
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr;
-
-    gap: 0;
-  }
-
-  .form-grid .form-group {
-    margin-bottom: 20px;
-  }
-
-  .checkout-submit-area {
-    display: block;
-  }
-
-  .checkout-submit {
-    width: 100%;
-  }
-
-}
+</html>
 ```
