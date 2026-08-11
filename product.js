@@ -361,3 +361,132 @@ document.addEventListener(
 
   }
 );
+async function addToCart(productId) {
+
+  const cart =
+    JSON.parse(
+      localStorage.getItem(
+        "ASTER4_CART"
+      ) || "[]"
+    );
+
+
+  try {
+
+    const response =
+      await fetch(
+        API_URL +
+        "?action=product&product=" +
+        encodeURIComponent(productId)
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if (
+      !data.success ||
+      !data.product
+    ) {
+
+      alert(
+        "商品資料取得失敗"
+      );
+
+      return;
+
+    }
+
+
+    const product =
+      data.product;
+
+
+    // =========================
+    // 檢查是否已在購物車
+    // =========================
+
+    const existing =
+      cart.find(
+        function(item) {
+
+          return item.productId ===
+            product.productId;
+
+        }
+      );
+
+
+    if (existing) {
+
+      existing.quantity =
+        Number(existing.quantity) + 1;
+
+    } else {
+
+      cart.push({
+
+        productId:
+          product.productId,
+
+        groupId:
+          product.groupId,
+
+        channel:
+          product.channel,
+
+        name:
+          product.name,
+
+        version:
+          product.version,
+
+        price:
+          Number(product.price),
+
+        image:
+          product.image,
+
+        quantity:
+          1
+
+      });
+
+    }
+
+
+    // =========================
+    // 儲存
+    // =========================
+
+    localStorage.setItem(
+      "ASTER4_CART",
+      JSON.stringify(cart)
+    );
+
+
+    // =========================
+    // 提示
+    // =========================
+
+    alert(
+      "已加入購物車！"
+    );
+
+
+  } catch (error) {
+
+    console.error(
+      error
+    );
+
+
+    alert(
+      "加入購物車失敗"
+    );
+
+  }
+
+}
+onclick="addToCart('${product.productId}')"
