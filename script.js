@@ -3,7 +3,7 @@ const API_URL =
 
 
 // =========================
-// ASTER4｜首頁
+// ASTER4｜首頁商品
 // =========================
 
 async function loadHomeProducts() {
@@ -33,7 +33,6 @@ async function loadHomeProducts() {
 
     displayHomeProducts(data.products);
 
-
   } catch (error) {
 
     console.error(
@@ -47,7 +46,7 @@ async function loadHomeProducts() {
 
 
 // =========================
-// 顯示首頁商品
+// 建立首頁商品卡片
 // =========================
 
 function displayHomeProducts(products) {
@@ -56,20 +55,8 @@ function displayHomeProducts(products) {
     document.getElementById("products");
 
   if (!container) {
+    console.error("找不到 #products");
     return;
-  }
-
-
-  if (!products || products.length === 0) {
-
-    container.innerHTML = `
-      <div class="empty-message">
-        目前沒有開放中的團次
-      </div>
-    `;
-
-    return;
-
   }
 
 
@@ -81,9 +68,12 @@ function displayHomeProducts(products) {
     const card =
       document.createElement("a");
 
+
+    // ⭐ 商品卡片真正的跳轉網址
     card.href =
-      "product.html?group=" +
+      "./product.html?group=" +
       encodeURIComponent(product.groupId);
+
 
     card.className =
       "product-card";
