@@ -22,6 +22,10 @@
 
 <body>
 
+  <!-- =========================
+       HEADER
+  ========================== -->
+
   <header class="site-header">
 
     <div class="header-inner">
@@ -57,9 +61,14 @@
 
 
 
+  <!-- =========================
+       CHECKOUT
+  ========================== -->
+
   <main class="checkout-page">
 
-    <div class="checkout-header">
+
+    <section class="checkout-header">
 
       <div class="checkout-eyebrow">
         CHECKOUT
@@ -70,85 +79,87 @@
       </h1>
 
       <p>
-        請確認你想購買的商品
+        請確認商品內容，並填寫訂購資訊
       </p>
 
-    </div>
-
-
-
-    <!-- 商品 -->
-
-    <section class="checkout-section">
-
-      <div class="checkout-section-title">
-
-        <h2>
-          訂單商品
-        </h2>
-
-      </div>
-
-
-      <div id="checkout-items">
-      </div>
-
-
-<div
-  class="checkout-total"
-  style="
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-top:30px;
-    padding:24px;
-    border-top:2px solid #222;
-    background:#fff;
-  "
->
-
-  <span
-    style="
-      font-size:18px;
-      font-weight:600;
-      color:#222;
-    "
-  >
-    訂單總額
-  </span>
-
-
-  <strong
-    id="checkout-total"
-    style="
-      display:block;
-      font-size:26px;
-      font-weight:700;
-      color:#222;
-    "
-  >
-    NT$ 0
-  </strong>
-
-</div>
     </section>
 
 
 
-    <!-- 訂購人資料 -->
+    <!-- =========================
+         商品確認
+    ========================== -->
 
     <section class="checkout-section">
 
       <div class="checkout-section-title">
 
-        <h2>
-          訂購人資料
-        </h2>
+        <div>
+
+          <span>
+            ORDER
+          </span>
+
+          <h2>
+            訂單商品
+          </h2>
+
+        </div>
 
       </div>
 
 
-      <form id="checkout-form">
+      <div
+        id="checkout-items"
+        class="checkout-items"
+      ></div>
+
+
+      <!-- ⭐ 總額 -->
+
+      <div class="checkout-total">
+
+        <span>
+          訂單總額
+        </span>
+
+        <strong id="checkout-total">
+          NT$ 0
+        </strong>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         訂購人資料
+    ========================== -->
+
+    <section class="checkout-section">
+
+      <div class="checkout-section-title">
+
+        <div>
+
+          <span>
+            INFORMATION
+          </span>
+
+          <h2>
+            訂購人資料
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <form
+        id="checkout-form"
+        class="checkout-form"
+      >
 
 
         <div class="form-group">
@@ -179,7 +190,7 @@
             type="text"
             id="social-account"
             name="socialAccount"
-            placeholder="例如：IG / Threads 帳號"
+            placeholder="例如：Instagram / Threads"
             required
           >
 
@@ -249,7 +260,7 @@
             id="note"
             name="note"
             rows="4"
-            placeholder="有其他想告訴我們的事情可以寫在這裡"
+            placeholder="有其他想告訴 ASTER4 的事情，可以寫在這裡"
           ></textarea>
 
         </div>
@@ -267,6 +278,7 @@
       </form>
 
     </section>
+
 
   </main>
 
