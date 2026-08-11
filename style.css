@@ -246,6 +246,10 @@ footer {
   font-size: 15px;
   cursor: pointer;
   transition: opacity 0.2s ease;
+   
+   text-decoration: none;
+display: inline-block;
+text-align: center;
 }
 
 .buy-button:hover {
